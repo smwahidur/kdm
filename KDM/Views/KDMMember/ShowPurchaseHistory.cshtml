@@ -1,0 +1,74 @@
+﻿@model IEnumerable<KDM.tbl_purchase>
+
+@{
+    ViewBag.Title = "ShowPurchaseHistory";
+    Layout = null;
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalBV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+
+       
+
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @item.OrderDate
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderID)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RB)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalAmount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderStatus)
+    </td>
+
+
+</tr>
+}
+
+</table>

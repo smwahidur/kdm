@@ -1,0 +1,63 @@
+﻿@using KDM.Models
+@model List<UserMemberLinkVModel>
+@{
+    ViewBag.Title = "LinkedMember";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<div class="col col-6">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                MY MEMBER LIST
+                <a href='@Url.Action("UserMemberLink","UserMemberLink")' class="btn btn-success btn-lg pull-right" style="text-align: center; height: 30px; font-size: 10px !important;">ADD NEW</a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align:left;">Placement ID</th>
+                        <th style="text-align:center;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="text-align:left;">@item.MemberId</td>
+                            <td style="text-align:center;">
+                                <div class="row" style="padding: 0%;">
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        <a href='@Url.Action("UserMemberLinkDelete","UserMemberLink",new {Id=item.ID})' class="col-sm-6 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: indianred;" confirm="">Cencel</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+

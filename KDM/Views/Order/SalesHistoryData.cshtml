@@ -1,0 +1,138 @@
+﻿@model IEnumerable<KDM.tbl_purchase>
+
+@{
+    ViewBag.Title = "SalesHistoryData";
+    Layout = "~/Views/Shared/_LayoutFramePage.cshtml";
+}
+
+<div class="main-card card border border-success rounded-0">
+
+    <div class="card">
+
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <th>
+                        SL No
+                    </th>
+                    <th>
+                        MemberID
+                    </th>
+                    <th>
+                        Order No
+                    </th>
+                    <th>
+                        Product Code
+                    </th>
+                    <th>
+                        Product
+                    </th>
+
+                    <th>
+                        MRP
+                    </th>
+
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Total AMount
+                    </th>
+
+                    <th>
+                        PV Point
+                    </th>
+                    <th>
+                        BV Point
+                    </th>
+
+                    <th>
+                        Shipping Address
+                    </th>
+                    <th>
+                        Order Status
+                    </th>
+                    <th>
+                        Order Date
+                    </th>
+                    <th>
+                        Order By
+                    </th>
+
+
+                </tr>
+                @{ int i = 1;}
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @{ var productCode = (new KDMDB()).tbl_products_master.Where(x => x.ProductID == item.ProductID).Select(x => x.Code).FirstOrDefault(); }
+                    @if(productCode!=null)
+                    {
+                    <span>@productCode</span>
+                    }
+                    else
+                    {
+                        <span class="text-warning">Code Not Found</span>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.MRP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.BP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RB)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShipmentAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderBy)
+                </td>
+
+
+
+
+            </tr>
+                    i++;
+                }
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+

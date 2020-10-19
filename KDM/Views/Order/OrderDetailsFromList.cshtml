@@ -1,0 +1,151 @@
+﻿@using KDM.Models
+@model List<KDM.Models.OrderViewModel>
+
+@{
+    ViewBag.Title = "OrderDetailsFromList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<div class="col col-12 ">
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+    }
+</div>
+
+<div class="main-card card border border-success rounded-0">
+    <div class="card-body">
+        <a href='@Url.Action("OrderList","Order")' class="col-sm-2 btn btn-success btn-lg btn-block">Go To Order List</a>
+        <div id="div3">
+            <p style="font-weight:bold;text-align:center;padding:0%;font-size:20px;">Order Details</p>
+            <hr />
+            <p style="font-weight:bold;text-align:center;padding:0%;"></p>
+            <p style="font-weight:bold;padding-left:2%;">Order Id&ensp;: &ensp;<span id="orderId"></span>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Date &ensp;:&ensp;@DateTime.Now.ToString("dd-MM-yyyy")</p>
+            <p style="font-weight:bold;text-align:center;padding:0%;font-size:20px;">Cart Details</p>
+            @{
+                double totalAmount = 0;
+            }
+            <table style="width:100%;">
+                <thead>
+                    <tr>
+                        <th style="width:25%;text-align:left;">Product</th>
+                        <th style="width:10%;text-align:center;">Quantity</th>
+                        <th style="width:10%;text-align:center;">DP</th>
+                       
+                        <th style="width:15%;text-align:center;">PV</th>
+                        <th style="width:15%;text-align:center;">BV</th>
+                        <th style="width:15%;text-align:center;">VAT</th>
+                        <th style="width:10%;text-align:center;">Total</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td style="width:25%;text-align:left;">@item.ProductName</td>
+                            <td style="width:10%;text-align:center;">@item.Quantity</td>
+                            <td style="width:10%;text-align:center;">@item.DP</td>
+                          
+                            <td style="width:15%;text-align:center;">@item.BP</td>
+                            <td style="width:15%;text-align:center;">@item.RB</td>
+                            <td style="width:15%;text-align:center;">@item.vat</td>
+                            <td style="width:10%;text-align:center;">@item.TotalAmount</td>
+                        </tr>
+                    </tbody>
+                    totalAmount += item.TotalAmount;
+                }
+
+                <tbody>
+                    <tr style="line-height: 8px; height: 8px;">
+                        <td colspan="5" style="border:none;text-align:right;"></td>
+                        <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Sub-Total :</td>
+                        <td style="border:2px solid;text-align:right;">@totalAmount</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr style="line-height: 8px; height: 8px;">
+                        <td colspan="5" style="border:none;text-align:right;"></td>
+                        <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Flat Shipping Rate :</td>
+                        <td style="border:2px solid;text-align:right;">@ViewBag.totalshiping</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr style="line-height: 8px; height: 8px;">
+                        <td colspan="5" style="border:none;text-align:right;"></td>
+                        <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Vat  :</td>
+                        <td style="border:2px solid;text-align:right;">@ViewBag.totalVat</td>
+                    </tr>
+                </tbody>
+                @*<tbody>
+                        <tr style="line-height: 8px; height: 8px;">
+                            <td colspan="4" style="border:none;text-align:right;"></td>
+                            <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Wallet Adjust :</td>
+                            <td style="border:2px solid;text-align:right;">@totalAmount</td>
+                        </tr>
+                    </tbody>*@
+                <tbody>
+                    <tr style="line-height: 8px; height: 8px;">
+                        <td colspan="5" style="border:none;text-align:right;"></td>
+                        <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Total(including vat) :</td>
+                        <td style="border:2px solid;text-align:right;">@ViewBag.totalAmount</td>
+                    </tr>
+                </tbody>
+            </table>
+            <label>Payment Method:</label>
+            <select id="PaymentMode" name="PaymentMode">
+                <option>---Select---</option>
+                <option value="COD">Cash On Delivery</option>
+                <option value="WP">Wallet Payment</option>
+            </select>
+            <br />
+            <br />
+            <textarea style="padding-left:2%;" id="PaymentAddress" name="PaymentAddress" placeholder="Payment Address" class="col-sm-6 form-control border border-success rounded-0"></textarea>
+            <textarea style="padding-left:2%;" id="ShipmentAddress" name="ShipmentAddress" placeholder="Shipment Address" class="col-sm-6 form-control border border-success rounded-0"></textarea>
+        </div>
+        <div class="position-relative form-group">
+            <a href="javascript:printDiv('div3')"><input type="button" value="Print" id="print" class="btn btn-success btn-lg btn-block" /></a>
+        </div>
+        <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+    </div>
+</div>
+
+
+@section script
+{
+    <script>
+
+        $(document).ready(function () {
+            $("#print").hide();
+        });
+        function printDiv(divId) {
+            window.frames["print_frame"].document.body.innerHTML = document.getElementById(divId).innerHTML;
+            window.frames["print_frame"].window.focus();
+            window.frames["print_frame"].window.print();
+        }
+    </script>
+}
+
+
+
+
+
+
+

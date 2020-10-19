@@ -1,0 +1,144 @@
+﻿@model IEnumerable<KDM.tbl_kdm_settings_master>
+
+@{
+    ViewBag.Title = "allparemeter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>allparemeter</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WalletBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PVForWalletBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SponsorBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PVForSponsorBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BinaryMatchingBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PVForBinaryMatchingBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GenerationBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GenerationBonusLayer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlyRoyaltyBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PVForMonthlyRoyaltyBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PerformanceBonusPercentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeadershipBonusPercentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RankIncentiveBonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoyalClubBonusPercentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ECommerceBonusPercentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DealerCommission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PVForDealerCommision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockistCommission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PVForStockistCommision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextMemberID)
+        </th>
+      
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WalletBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PVForWalletBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SponsorBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PVForSponsorBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BinaryMatchingBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PVForBinaryMatchingBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GenerationBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GenerationBonusLayer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlyRoyaltyBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PVForMonthlyRoyaltyBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PerformanceBonusPercentage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeadershipBonusPercentage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RankIncentiveBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoyalClubBonusPercentage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ECommerceBonusPercentage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DealerCommission)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PVForDealerCommision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockistCommission)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PVForStockistCommision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NextMemberID)
+        </td>
+      
+    </tr>
+}
+
+</table>

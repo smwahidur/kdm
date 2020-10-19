@@ -1,0 +1,95 @@
+﻿@using KDM.Models
+@model List<MemberRegistrationViewModel>
+@{ 
+    ViewBag.Title = "MemberList"; 
+}
+
+<div class="col-md-12">
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+<div class="alert alert-danger fade show" role="alert">
+    <strong>@ViewBag.ErrorMessage</strong>
+</div>}
+    @if (ViewBag.SuccessMessage != null)
+    {
+<div class="alert alert-success fade show" role="alert">
+    <strong>@ViewBag.SuccessMessage</strong>
+</div>}
+
+
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">
+                @if (ViewBag.PanelTitles != null)
+                {@ViewBag.PanelTitles["PanelTitle1"] }
+
+            else
+            { <span>START FROM HERE <b>&#11015;</b></span>}
+
+
+
+            </h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SL#</th>
+                        <th>SPONSOR NAME</th>
+                        <th>PHONE NUMBER</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ var count = 1;
+                        var color = "#ffffe6"; }
+                    @foreach (var item in Model)
+                    {
+        <tr style="background-color:@color">
+            <td>@count</td>
+            <td>@item.SponsorName</td>
+            <td>@item.Phone1</td>
+
+            <td>
+
+                <div class="btn-group" role="group">
+                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
+                        ACTION <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+
+                        @using (Html.BeginForm("MemberDetails", "Member", new { id = item.ID, ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get, new { @class = "" }))
+                        {
+        @Html.AntiForgeryToken()
+
+                            <input type="submit" value="Details" class="dropdown-item" />}
+
+                        @using (Html.BeginForm("UpdateMember", "Member", new { id = item.ID, ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get, new { @class = "" }))
+                        {
+        @Html.AntiForgeryToken()
+
+                            <input type="submit" value="Update" class="dropdown-item text-warning" />}
+
+                        @using (Html.BeginForm("MemberDelete", "Member", new { id = item.ID, ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+                        {
+        @Html.AntiForgeryToken()
+
+                            <input type="submit" value="Delete" class="dropdown-item text-danger" confirm="" />}
+
+                    </div>
+                </div>
+
+            </td>
+        </tr>count++;
+                    }
+
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+

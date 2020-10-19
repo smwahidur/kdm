@@ -1,0 +1,78 @@
+﻿@model IEnumerable<KDM.tbl_binary_matching_data>
+
+@{
+    ViewBag.Title = "CustomerBinaryReportAction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+        <div class="main-card card border border-success rounded-0">
+
+
+            <div class="card-header">
+
+                <div class="form-group row justify-content-center ">
+                    <h2>Binary Income</h2>
+                </div>
+            </div>
+
+            <div class="card-body">
+
+                <table class="table">
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.BPCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProcessDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MatchingCount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ALeftPoint)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ARightPoint)
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BPCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProcessDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MatchingCount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ALeftPoint)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ARightPoint)
+                            </td>
+
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+

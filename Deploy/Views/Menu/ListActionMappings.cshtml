@@ -1,0 +1,123 @@
+﻿@model List<tbl_RoleActionMappings>
+@using KDM.Models
+@using KDM.Helpers
+
+@{
+
+    ViewBag.Title = "CATEGORY ACTION MAPPINGS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var listTitle = "LIST OF CATEGORY ACTION MAPPINGS";
+}
+<div class="col col-sm-12">
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger fade show" role="alert">
+            <strong>@ViewBag.ErrorMessage</strong>
+        </div>
+    }
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success fade show" role="alert">
+            <strong>@ViewBag.SuccessMessage</strong>
+        </div>
+    }
+
+    <div class="main-card card border border-success rounded-0">
+        <div class="card-body">
+
+            <div class="card-title">
+                @listTitle
+            </div>
+
+            @if (Model.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>SL#</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Role</th>
+                            <th>Module</th>
+                            <th>Controller</th>
+                            <th>Action</th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var count = 1;
+                        }
+
+                        @foreach (var item in Model)
+                        {
+                            using (Html.BeginForm("SaveCategoryActionMappings", "Menu", new { id = item.ID, ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+                            {
+                                @Html.AntiForgeryToken()
+                        <tr>
+                            <td>@count</td>
+                            <td>
+                                <select name="Category" class="col-sm-8 form-control border border-success rounded-0">
+
+                                    @foreach (var optionItem in ViewHelper.LoadMenuCategories())
+                                    {
+                                        if (optionItem.Value == item.Category.ToString())
+                                        {
+                                            <option value=@optionItem.Value selected>@optionItem.Text</option>
+                                        }
+                                        else
+                                        {
+                                            <option value=@optionItem.Value>@optionItem.Text</option>
+                                        }
+                                    }
+
+                                </select>
+
+                            </td>
+                            <td>
+                                <select name="isActive" class="col-sm-8 form-control border border-success rounded-0">
+                                    @if (item.IsActive == true)
+                                    {
+                                        <option value="True" selected>Active</option>
+                                        <option value="False">In-Active</option>
+                                    }
+                                    else if (item.IsActive == false)
+                                    {
+                                        <option value="True">Active</option>
+                                        <option value="False" selected>In-Active</option>
+                                    }
+                                </select>
+
+                            </td>
+                            <td>@item.Role</td>
+                            <td>@item.Area</td>
+                            <td>@item.Controller</td>
+                            <td>@item.Action</td>
+
+                            <td>
+
+                                <input type="submit" class="btn btn-sm btn-warning" confirm value="Save" />
+
+                            </td>
+                        </tr>
+                            }
+                            count++;
+                        }
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            }
+            else
+            {
+                <span>No Data Found</span>
+            }
+
+        </div>
+    </div>
+
+</div>

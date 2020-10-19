@@ -1,0 +1,66 @@
+﻿@model IEnumerable<KDM.tbl_add_to_cart>
+
+
+    @*<style>
+        div.dataTables_wrapper {
+            width: 250px;
+            margin: 0 auto;
+        }
+    </style>*@
+<table class="table" style="width:100%;" id="cart">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+           
+            <th>
+                Delete
+            </th>
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                
+                <td>
+                    @*<a href='@Url.Action("DeleteFromCart","KDMMember",new {ProductID=item.ProductID,MemberID=item.MemberID})' class="col-sm-10 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: indianred;"> Delete One</a>*@
+                    @using (Html.BeginForm("DeleteFromCart", "KDMMember", FormMethod.Post))
+                     {
+                       @Html.AntiForgeryToken()
+                       <input type="hidden" name = "ProductID" value="@item.ProductID" />
+                       <input type="hidden" name = "MemberID" value="@item.MemberID" />
+                       <input type="submit" value = "Delete" confirm="" class="btn btn-sm btn-danger" />
+                    }
+
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+
+@section script{
+
+    <script>
+        $(document).ready(function () {
+            $('#cart').DataTable({
+                "scrollY": "450px",
+                "scrollCollapse": true,
+                "paging": false
+            });
+        });
+    </script>
+}

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<KDM.tbl_member_tree_history>
+
+@{
+    ViewBag.Title = "ShowprocessDetails";
+    Layout =null;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BLeftPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BRightPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BOwnPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALeftPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ARightPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AOwnPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BBVPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ABVPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProcessDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BLeftPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRightPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOwnPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALeftPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ARightPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AOwnPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BBVPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ABVPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProcessDate)
+        </td>
+        <td>
+          
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,288 @@
+﻿@using KDM.Models
+@model MemberRegistrationViewModel
+
+@{
+    ViewBag.Title = "UpdateMember";
+}
+
+<style>
+    .btn:hover {
+        color: blue !important;
+    }
+
+    .btn:focus {
+        background-color: aqua !important;
+    }
+
+    .select2-selection--single:focus {
+        background-color: aqua !important;
+    }
+
+    .headerText {
+        width: 100%;
+        background-color: #f09a5d;
+        text-align: center;
+        height: 6%;
+        font-weight: bold;
+    }
+    /*for design need to confirm from niaz vai*/
+    .textbox {
+        width: 100%;
+        height: 125% !important;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px !important;
+    }
+
+    .label {
+        font-size: 14px !important;
+    }
+
+    .label2 {
+        background-color: #e697a6;
+        text-align: center;
+        font-weight: bold;
+        padding-top: 1px;
+        margin: 2px !important;
+    }
+    .block {
+        display: block;
+        width: 100%;
+        background-color: #f09a5d;
+        color: black;
+        cursor: pointer;
+        text-align: center;
+        height: 6% !important;
+        font-weight: bold;
+    }
+
+    .block:hover {
+        background-color: #ddd;
+        color: black;
+    }
+</style>
+
+
+
+<div class="headerText">
+    <h4>Member Update</h4>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.SponsorName, "Sponsor Username", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.SponsorName, new { @class = "textbox", @placeholder = "Sponsor User Name" })
+                    @Html.ValidationMessageFor(m => m.SponsorName, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.Position, "Position", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.Position, new { @class = "textbox", @placeholder = "Position" })
+                    @Html.ValidationMessageFor(m => m.Position, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.DistributorName, "Distributor Name", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.DistributorName, new { @class = "textbox", @placeholder = "Distributor Name" })
+                    @Html.ValidationMessageFor(m => m.DistributorName, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.FathersName, "Fathers Name", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.FathersName, new { @class = "textbox", @placeholder = "Fathers Name" })
+                    @Html.ValidationMessageFor(m => m.FathersName, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.MothersName, "Mothers Name", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.MothersName, new { @class = "textbox", @placeholder = "Mothers Name" })
+                    @Html.ValidationMessageFor(m => m.MothersName, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.PresentAddress, "Present Address", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.PresentAddress, new { @class = "textbox", @placeholder = "Present Address" })
+                    @Html.ValidationMessageFor(m => m.PresentAddress, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.PermanentAddress, "Permanent Address", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.PermanentAddress, new { @class = "textbox", @placeholder = "Permanent Address" })
+                    @Html.ValidationMessageFor(m => m.PermanentAddress, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.NID, "NID Number", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.NID, new { @class = "textbox", @placeholder = "NID Number" })
+                    @Html.ValidationMessageFor(m => m.NID, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.Phone1, "Mobile Number 1", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.Phone1, new { @class = "textbox", @placeholder = "Mobile Number 1" })
+                    @Html.ValidationMessageFor(m => m.Phone1, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.Phone2, "Mobile Number 2", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.Phone2, new { @class = "textbox", @placeholder = "Mobile Number 2" })
+                    @Html.ValidationMessageFor(m => m.Phone2, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.NomineeName, "Nominee Name", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.NomineeName, new { @class = "textbox", @placeholder = "Nominee Name" })
+                    @Html.ValidationMessageFor(m => m.NomineeName, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.RelationWithNominee, "Relation With Nominee", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.RelationWithNominee, new { @class = "textbox", @placeholder = "Relation With Nominee" })
+                    @Html.ValidationMessageFor(m => m.RelationWithNominee, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.NomineeNIDOrBirthCertificate, "Nominee NID Or Birth Certificate", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.NomineeNIDOrBirthCertificate, new { @class = "textbox", @placeholder = "Nominee NID Or Birth Certificate" })
+                    @Html.ValidationMessageFor(m => m.NomineeNIDOrBirthCertificate, "", new { @style = "color: red" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <img id="Img" src="#" alt="your image" />
+            <input type='file' id="inputFile" onchange="readURL(this);" enctype="multipart/form-data" />
+        </div>
+    </div>
+    <div>
+        <button id="update" class="block">Update</button>
+    </div>
+</div>
+
+@section script
+{
+    <script>
+
+        $(document).ready(function () {
+            @*if (@ViewBag.Error == "") {*@
+                $("#SponsorID").val(Model.SponsorID);
+                $("#SponsorName").val(Model.SponsorName);
+                $("#Position").val(Model.Position);
+                $("#DistributorName").val(Model.DistributorName);
+                $("#FathersName").val(Model.FathersName);
+                $("#MothersName").val(Model.MothersName);
+                $("#PresentAddress").val(Model.PresentAddress);
+                $("#PermanentAddress").val(Model.PermanentAddress);
+                $("#NID").val(Model.NID);
+                $("#Phone1").val(Model.Phone1);
+                $("#Phone2").val(Model.Phone2);
+                $("#NomineeName").val(Model.NomineeName);
+                $("#RelationWithNominee").val(Model.RelationWithNominee);
+                $("#NomineeNIDOrBirthCertificate").val(Model.NomineeNIDOrBirthCertificate);
+            //}
+        });
+
+        var member = { ID: "", SponsorID: "", SponsorName: "", Position: "", DistributorName: "", FathersName: "", MothersName: "", PresentAddress: "", PermanentAddress: "", NID: "", Phone1: "", Phone2: "", NomineeName: "", RelationWithNominee: "", NomineeNIDOrBirthCertificate: "", CreateBy: "", CreateDate: "", PhotoID: "", Photo: "" };
+
+        $(document).on('click', '#update', function () {
+            $("#update").prop('disabled', true);
+            SetMember();
+            if (confirm('Do you want to Update?')) {
+                $.ajax({
+                    url: '@Url.Action("UpdateMemberResponse", "Member")',
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify({ member: member }),
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (datas) {
+                        if (datas == 0) {
+                            alert("Failed To Update.");
+                            $("#update").prop('disabled', false);
+                        }
+                        else {
+                            alert("Sucessfully Updated.");
+                            $("#update").prop('disabled', true);
+                        }
+                    },
+                    error: function () {
+                        alert("Please check your internet connection first.")
+                        $("#update").prop('disabled', false);
+                    }
+                });
+            }
+            else {
+                $("#update").prop('disabled', false);
+            }
+        });
+
+        //get value from textbox
+        function SetMember() {
+            member.ID = @ViewBag.Id;
+            member.SponsorID = $("#SponsorID").val();
+            member.SponsorName = $("#SponsorName").val();
+            member.Position = $("#Position").val();
+            member.DistributorName = $("#DistributorName").val();
+            member.FathersName = $("#FathersName").val();
+            member.MothersName = $("#MothersName").val();
+            member.PresentAddress = $("#PresentAddress").val();
+            member.PermanentAddress = $("#PermanentAddress").val();
+            member.NID = $("#NID").val();
+            member.Phone1 = $("#Phone1").val();
+            member.Phone2 = $("#Phone2").val();
+            member.NomineeName = $("#NomineeName").val();
+            member.RelationWithNominee = $("#RelationWithNominee").val();
+            member.NomineeNIDOrBirthCertificate = $("#NomineeNIDOrBirthCertificate").val();
+            //member.CreateBy = $("#CreateBy").val();
+            //member.CreateDate = $("#CreateDate").val();
+            //member.PhotoID = $("#PhotoID").val();
+            //member.Photo = $("#Photo").val();
+        }
+
+    </script>
+}
+
+
+

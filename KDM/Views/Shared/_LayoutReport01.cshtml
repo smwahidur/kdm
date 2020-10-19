@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+    @Styles.Render("~/style/v1")
+
+</head>
+<body>
+    @*@Html.Partial("~/Views/Partials/Report/_ReportHeader.cshtml")*@
+    <div class="report-body">
+        @RenderBody()
+    </div>
+    @*@Html.Partial("~/Views/Partials/Report/_ReportFooter.cshtml")*@
+</body>
+</html>

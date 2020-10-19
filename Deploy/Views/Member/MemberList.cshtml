@@ -1,0 +1,202 @@
+﻿@model IEnumerable<KDM.tbl_members>
+
+@{
+    ViewBag.Title = "MemberList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    div.dataTables_wrapper {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+</style>
+
+<div class="main-card card border border-success rounded-0">
+    <div class="card-body">
+        <h4>Member List</h4>
+        <div class="main-card card border border-success rounded-0">
+            <div class="card-body">
+                <table class="display nowrap" style="width:100%" id="memberList">
+                    <thead>
+                        <tr>
+                            <th>
+                                Member ID
+                            </th>
+                            <th>
+                                Placement ID
+                            </th>
+                            <th>
+                                Sponsor ID
+                            </th>
+                            <th>
+                                Sponsor Name
+                            </th>
+                            <th>
+                                Position
+                            </th>
+                            <th>
+                                Distributor Name
+                            </th>
+                            <th>
+                                Fathers Name
+                            </th>
+                            <th>
+                                Mothers Name
+                            </th>
+                            <th>
+                                Present Address
+                            </th>
+                            <th>
+                                Permanent Address
+                            </th>
+                            <th>
+                                NID
+                            </th>
+                            <th>
+                                Phone1
+                            </th>
+                            <th>
+                                Phone2
+                            </th>
+                            <th>
+                                Nominee Name
+                            </th>
+                            <th>
+                                Relation With Nominee
+                            </th>
+                            <th>
+                                Nominee NID Or Birth Certificate
+                            </th>
+                            <th>
+                                Photo ID
+                            </th>
+                            <th>
+                                Create By
+                            </th>
+                            <th>
+                                Create Date
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MemberID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PlacementID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SponsorID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SponsorName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Position)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DistributorName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FathersName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MothersName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PresentAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PermanentAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Phone1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Phone2)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NomineeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RelationWithNominee)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NomineeNIDOrBirthCertificate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhotoID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreateBy)
+                                </td>
+                                <td>
+                                    @string.Format("{0:dd-MM-yyyy}", item.CreateDate)
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false" style="font-size: 10px !important; color: #000066 !important;">
+                                            @*ACTION*@ <span class="caret"></span>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+
+                                            @using (Html.BeginForm("MemberDetails", "Member", new { id = item.ID, ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get, new { @class = "" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                                <input type="submit" value="Details" class="dropdown-item" />}
+
+                                            @*@using (Html.BeginForm("UpdateMember", "Member", new { MemberID = item.MemberID }, FormMethod.Get, new { @class = "" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="submit" value="Update" class="dropdown-item text-warning" />}*@
+                                        <a style="text-decoration:none;" href='@Url.Action("UpdateMember", "Member",new {MemberID=item.MemberID})'>
+                                            <input type="button" value="Update" class="dropdown-item text-warning" />
+                                        </a>
+
+                                            @using (Html.BeginForm("MemberDelete", "Member", new { id = item.ID }, FormMethod.Post, new { @class = "" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                                <input type="submit" value="Delete" class="dropdown-item text-danger" confirm="" />}
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
+
+            </div>
+        </div>
+        @section script{
+
+            <script>
+
+                $(document).ready(function () {
+                    $('#memberList').DataTable({
+                        //"scrollY": 200,
+                        "scrollY": "450px",
+                        "scrollX": true,
+                        'autoWidth': false,
+                        "paging": false
+                    });
+                });
+
+            </script>
+        }

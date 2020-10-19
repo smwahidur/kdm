@@ -1,0 +1,484 @@
+﻿@model KDM.Models.OrderViewModel
+@using KDM.Helpers
+@{
+    ViewBag.Title = "CreateOrder";
+}
+
+<div class="row col-md-12">
+    <div class="col-md-6">
+        <div class="col-md-12">
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger fade show" role="alert">
+                    <strong>@ViewBag.ErrorMessage</strong>
+                </div>
+            }
+            @if (ViewBag.SuccessMessage != null)
+            {
+                <div class="alert alert-success fade show" role="alert">
+                    <strong>@ViewBag.SuccessMessage</strong>
+                </div>
+            }
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title">
+
+                        @if (ViewBag.PanelTitles != null)
+                        {@ViewBag.PanelTitles["AddNewOrder"] }
+
+                    else
+                    { <span>START FROM HERE <b>&#11015;</b></span>}
+                    </h5>
+
+                    @using (Html.BeginForm("CreateOrder", "Order", FormMethod.Post, new { @class = "" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="main-card card border border-success rounded-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.LabelFor(m => m, "Product Code", new { @class = "col-sm-3 col-form-label" })
+                                        @Html.DropDownListFor(m => m.ProductCode, ViewHelper.LoadProductFromDB(), "---Select---", new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Product Code", style = "height: 3em !important;font-size: 10px !important;" })
+                                        @Html.ValidationMessageFor(m => m.ProductCode, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.LabelFor(m => m.Quantity, "Quantity", new { @class = "col-sm-3 col-form-label" })
+                                        @Html.TextBoxFor(m => m.Quantity, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Quantity", @value = 1, type = "number", style = "height: 3em !important;font-size: 10px !important;" })
+                                        @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.LabelFor(m => m.DP, "DP", new { @class = "col-sm-3 col-form-label" })
+                                        @Html.TextBoxFor(m => m.DP, new { @Readonly = "Readonly", @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "DP", type = "number", style = "height: 3em !important;font-size: 10px !important;" })
+                                        @Html.ValidationMessageFor(m => m.DP, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.LabelFor(m => m.MemberID, "Member ID", new { @class = "col-sm-3 col-form-label" })
+                                        @Html.TextBoxFor(m => m.MemberID, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Member ID" })
+                                        @Html.ValidationMessageFor(m => m.MemberID, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.Label("Member Name", new { @class = "col-sm-3 col-form-label" })
+                                        @*@Html.TextBox("Member Name", new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Member ID" })*@
+                                        @*@Html.ValidationMessageFor(m => m.MemberID, "", new { @class = "text-danger" })*@
+                                        <span class="col-sm-8" id="memberNameValue"></span>
+                                    </div>
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.LabelFor(m => m.BP, "PV", new { @class = "col-sm-3 col-form-label" })
+                                        @Html.TextBoxFor(m => m.BP, new { @Readonly = "Readonly", @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "BP", type = "number", style = "height: 3em !important;font-size: 10px !important;" })
+                                        @Html.ValidationMessageFor(m => m.BP, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.LabelFor(m => m.RB, "BV", new { @class = "col-sm-3 col-form-label" })
+                                        @Html.TextBoxFor(m => m.RB, new { @Readonly = "Readonly", @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "RB", type = "number", style = "height: 3em !important;font-size: 10px !important;" })
+                                        @Html.ValidationMessageFor(m => m.RB, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.LabelFor(m => m.TotalAmount, "Total Amount", new { @class = "col-sm-3 col-form-label" })
+                                        @Html.TextBoxFor(m => m.TotalAmount, new { @Readonly = "Readonly", @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Total Amount", type = "number", style = "height: 3em !important;font-size: 10px !important;" })
+                                        @Html.ValidationMessageFor(m => m.TotalAmount, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.LabelFor(m => m.TotalPV, "Total PV", new { @class = "col-sm-3 col-form-label" })
+                                        @Html.TextBoxFor(m => m.TotalPV, new { @Readonly = "Readonly", @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Total PV", type = "number", style = "height: 3em !important;font-size: 10px !important;" })
+                                        @Html.ValidationMessageFor(m => m.TotalPV, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        @Html.LabelFor(m => m.TotalBV, "Total BV", new { @class = "col-sm-3 col-form-label" })
+                                        @Html.TextBoxFor(m => m.TotalBV, new { @Readonly = "Readonly", @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Total BV", type = "number", style = "height: 3em !important;font-size: 10px !important;" })
+                                        @Html.ValidationMessageFor(m => m.TotalBV, "", new { @class = "text-danger" })
+                                    </div>
+                                    @*<div class="form-group row justify-content-center col col-sm-12">
+                                            @Html.LabelFor(m => m.DealerID, "Dealer", new { @class = "col-sm-3 col-form-label" })
+                                            @Html.DropDownListFor(m => m.DealerID, ViewHelper.LoadDealer(), "---Select---", new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                            @Html.ValidationMessageFor(m => m.DealerID, "", new { @class = "text-danger" })
+                                        </div>*@
+                                    @*<div class="form-group row justify-content-center col col-sm-12">
+                                            @Html.LabelFor(m => m.PaymentAddress, "Payment Address", new { @class = "col-sm-3 col-form-label" })
+                                            @Html.TextAreaFor(m => m.PaymentAddress, new { @class = "col-sm-8 form-control border border-success rounded-0", style = "font-size: 10px !important", @placeholder = "Payment Address" })
+                                            @Html.ValidationMessageFor(m => m.PaymentAddress, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group row justify-content-center col col-sm-12">
+                                            @Html.LabelFor(m => m.ShipmentAddress, "Shipment Address", new { @class = "col-sm-3 col-form-label" })
+                                            @Html.TextAreaFor(m => m.ShipmentAddress, new { @class = "col-sm-8 form-control border border-success rounded-0", style = "font-size: 10px !important", @placeholder = "Shipment Address" })
+                                            @Html.ValidationMessageFor(m => m.ShipmentAddress, "", new { @class = "text-danger" })
+                                        </div>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="position-relative form-group">
+                            <input type="button" value="Add To Cart" id="addToGrid" class="btn btn-success btn-lg btn-block" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="main-card card border border-success rounded-0">
+            <br />
+            <h5 style="text-align:center;">Order Details </h5>
+            <hr />
+            <div class="card-body">
+                <table class="table table-responsive" id="OrderList">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;">Member Name</th>
+                            <th style="text-align:left;">Product</th>
+                            <th style="text-align:left;">Quantity</th>
+                            <th style="text-align:left;">DP</th>
+                            <th style="text-align:left;">Edit</th>
+                            <th style="text-align:left;">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="position-relative form-group">
+            <a href='@Url.Action("OrderDetailsForPostOrder", "Order")' class="col-sm-12 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;">Continue Order</a>
+        </div>
+    </div>
+</div>
+
+
+@section script{
+
+
+    <script type="text/javascript">
+
+        $(function () {
+            var isValid = true;
+            var addedItems = [];
+            var table = $('#OrderList').DataTable({
+                'paging': false,
+                'lengthChange': false,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false,
+                responsive: true
+            });
+
+            $("#ProductCode").change(function () {
+
+                var ProductCode = $(this).val().trim();
+                var url = '@Url.Action("GetProductDetails", "Order")' + '?ProductCode=' + ProductCode;
+                console.log(url);
+                $.get(url, function (data) {
+                    console.log(data);
+                    //$("[name=ProductName]").val(data.ProductName);
+                    $("[name=Quantity]").val(1);
+                    $("[name=ProductTypeID]").val(data.Type).change();
+                    $("[name=DP]").val(data.DP);
+                    $("[name=BP]").val(data.BP);
+                    $("[name=RB]").val(data.RB);
+
+                    $("[name=TotalAmount]").val(data.DP);
+                    $("[name=TotalPV]").val(data.BP);
+                    $("[name=TotalBV]").val(data.RB);
+                });
+            });
+
+
+            $("[name=Quantity]").on('input', function () {
+
+                var q = $("[name=Quantity]").val();
+                var DP = $("[name=DP]").val();
+                var pv = $("[name=BP]").val();
+                var bv = $("[name=RB]").val();
+
+                console.log(pv, bv);
+
+                if (!isNaN(q) && !isNaN(DP))
+                    var newDP = q * DP;
+                if (!isNaN(q) && !isNaN(pv))
+                    var totalPV = q * pv;
+                if (!isNaN(q) && !isNaN(bv))
+                    var totalBV = q * bv;
+
+                if (!isNaN(newDP))
+                    $("[name=TotalAmount]").val(newDP);
+
+                if (!isNaN(totalPV))
+                    $("[name=TotalPV]").val(totalPV);
+
+                if (!isNaN(totalBV))
+                    $("[name=TotalBV]").val(totalBV);
+
+            });
+
+            $(document).ready(function () {
+                $("#print").hide();
+                $.ajax({
+                    url: '@Url.Action("GetOrderListByUser", "Order")',
+                    contentType: "application/json;charset=utf-8",
+                    //data: id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (datas) {
+
+                        //console.log(datas);
+
+                        if (datas == 0) {
+
+                        }
+                        else {
+                            $.each(datas, function (index, value) {
+                                var item = {
+                                    OrderID: "", ProductCode: "", ProductName: "", MRP: "", DP: "", MemberID: "", MemberName: "", BP: "", RB: "", TotalAmount: "", TotalPV: "",
+                                    TotalBV: "", DealerID: "", PaymentAddress: "", ShipmentAddress: "", OrderStatus: "", OrderDateTime: "", OrderBy: "",
+                                    OrderApprovedBy: "", OrderCanceledBy: "", Quantity: ""
+                                };
+
+                              //  item.ProductCode = value.ProductCode;
+                                item.ProductCode = value.Code;
+                                item.ProductName = value.ProductName;
+                                item.MRP = value.MRP;
+                                item.DP = value.DP;
+                                item.MemberID = value.MemberID;
+                                item.MemberName = value.MemberName;
+                                item.BP = value.BP;
+                                item.RB = value.RB;
+                                item.TotalAmount = value.TotalAmount;
+                                item.TotalPV = value.TotalPV;
+                                item.TotalBV = value.TotalBV;
+                                //item.DealerID = value.ProductCode;
+                                //item.PaymentAddress = value.ProductCode;
+                                //item.ShipmentAddress = value.ProductCode;
+                                item.Quantity = value.Quantity;
+                                addedItems.push(item);
+                            });
+
+                            //console.log(addedItems);
+
+                            ShowOnTable();
+                        }
+                    },
+                    error: function () {
+
+                    }
+                });
+
+            });
+
+            $("[name=MemberID]").on('input', function () {
+                var ProductCode = $(this).val().trim();
+                var url = '@Url.Action("GetSponsorName", "Member")' + '?spId=' + ProductCode;
+                console.log(url);
+                $.get(url, function (data) {
+                    console.log(data);
+                    //var mySpan = document.getElementById('memeberNameLabel');
+                    //mySpan.style.display = "";
+                    //$("#memberNamelabel").hide();
+                    $("#memberNameValue").text(data);
+                });
+            });
+
+            $(document).on('click', "#addToGrid", function () {
+                RemoveError();
+                ValidateToGrid();
+                if (isValid == true) {
+                    var item = {
+                        OrderID: "", ProductCode: "", ProductName: "", MRP: "", DP: "", MemberID: "", MemberName: "", BP: "", RB: "", TotalAmount: "", TotalPV: "",
+                        TotalBV: "", DealerID: "", PaymentAddress: "", ShipmentAddress: "", OrderStatus: "", OrderDateTime: "", OrderBy: "",
+                        OrderApprovedBy: "", OrderCanceledBy: "", Quantity: ""
+                    };
+
+                    item.ProductCode = $("#ProductCode").val();
+                    item.ProductName = $("#ProductCode option:selected").text();
+                    item.MRP = $("#MRP").val();
+                    item.DP = $("#DP").val();
+                    item.MemberID = $("#MemberID").val();
+                    item.MemberName = $("#memberNameValue").text();
+                    item.BP = $("#BP").val();
+                    item.RB = $("#RB").val();
+                    item.TotalAmount = $("#TotalAmount").val();
+                    item.TotalPV = $("#TotalPV").val();
+                    item.TotalBV = $("#TotalBV").val();
+                    item.DealerID = $("#DealerID").val();
+                    item.PaymentAddress = $("#PaymentAddress").val();
+                    item.ShipmentAddress = $("#ShipmentAddress").val();
+                    item.Quantity = $("#Quantity").val();
+                    addedItems.push(item);
+                    $.ajax({
+                        url: '@Url.Action("PostOrder", "Order")',
+                        contentType: "application/json;charset=utf-8",
+                        data: JSON.stringify({ orderViewModel: item }),
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (datas) {
+
+                        }
+                    });
+                    ShowOnTable();
+
+                    $("#MemberID").prop('disabled', true);
+
+                    $("#ProductCode").val("");
+                    $("#MRP").val("");
+                    $("#DP").val("");
+                    $("#BP").val("");
+                    $("#RB").val("");
+                    $("#TotalAmount").val("");
+                    $("#TotalPV").val("");
+                    $("#TotalBV").val("");
+                    $("#DealerID").val("");
+                    //$("#PaymentAddress").val("");
+                    //$("#ShipmentAddress").val("");
+                    $("#Quantity").val("");
+                }
+            });
+
+            //save code
+            $(document).on('click', '#save', function () {
+                RemoveError();
+                //$("#save").prop('disabled', true);
+                if (addedItems.length <= 0) {
+                    alert("At least One Item should be added for save.");
+                    $("#save").prop('disabled', false);
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("PostOrder", "Order")',
+                        contentType: "application/json;charset=utf-8",
+                        data: JSON.stringify({ orderViewModel: addedItems }),
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (datas) {
+                            if (datas == 0) {
+                                alert("Failed Check Your internet connection first.");
+                            }
+                        }
+                    });
+                }
+            });
+
+            function ValidateToGrid() {
+                isValid = true;
+                if ($("#ProductCode").val() == "") {
+                    setError("ProductCode", "Product is Required.");
+                    isValid = false;
+                }
+                if ($("#Quantity").val() == "") {
+                    setError("Quantity", "Quantity is Required.");
+                    isValid = false;
+                }
+                if ($("#MemberID").val() == "") {
+                    setError("MemberID", "Member ID is Required.");
+                    isValid = false;
+                }
+                if ($("#memberNameValue").text() == 0) {
+                    setError("MemberID", "Member Not Found.");
+                    isValid = false;
+                }
+                $.each(addedItems, function (index, value) {
+                    if (value.ProductCode == $("#ProductCode").val()) {
+                        setError("ProductCode", "This Product is Already Added.");
+                        isValid = false;
+                    }
+                });
+            }
+
+            function setError(id, message) {
+                var span = $("span[data-valmsg-for=\"" + id + "\"]");
+                if (span && span.length > 0) {
+                    $(span).html(message);
+                    if (message && message != "") {
+                        $(span).removeClass("field-validation-valid");
+                        $(span).addClass("field-validation-no-valid");
+                    } else {
+                        $(span).removeClass("field-validation-no-valid");
+                        $(span).addClass("field-validation-valid");
+                    }
+                }
+            }
+
+            function RemoveError() {
+                $(".field-validation-error").text("");
+                $(".field-validation-no-valid").text("");
+            }
+
+            function ShowOnTable() {
+                table.clear().draw();
+                $.each(addedItems, function (index, value) {
+
+                    table.row.add([value.MemberName, value.ProductName, value.Quantity, value.DP,
+                        '<a name="editRow" class="btn btn-sm btn-warning" href="#" value="' + value.ProductCode + '" >Edit</a>',
+                        '<a name="deleteRow"class="btn btn-sm btn-danger" href="#" value="' + value.ProductCode + '">Delete</a>'
+                    ]).draw();
+                });
+            }
+
+            //delete Row
+            $(document).on('click', '[name="deleteRow"]', function () {
+                var item = $(this).attr("value");
+                var newItem = [];
+                if (confirm('Are you sure you want to delete this from Grid ?')) {
+                    $.each(addedItems, function (index, value) {
+                        console.log(value, item);
+                        if (value.ProductCode == item) {
+                            var id = { productCode: value.ProductCode }
+                            $.ajax({
+                                url: '@Url.Action("DeleteFromAddToCart", "Order")',
+                                contentType: "application/json;charset=utf-8",
+                                data: id,
+                                type: 'Get',
+                                dataType: 'json',
+                                success: function (datas) {
+
+                                    console.log(datas);
+
+                                    if (datas == 0) {
+                                        alert("Failed Check Your internet connection first.");
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            newItem.push(value);
+                        }
+                    });
+                    addedItems = newItem;
+                    ShowOnTable();
+                }
+            });
+
+            //edit Row
+            $(document).on('click', '[name="editRow"]', function () {
+                var item = $(this).attr("value");
+                var newItem = [];
+                $.each(addedItems, function (index, value) {
+                    if (value.ProductCode == item) {
+
+                        $("#ProductCode").val(value.ProductCode);
+                        $("#MRP").val(value.MRP);
+                        $("#DP").val(value.DP);
+                        $("#MemberID").val(value.MemberID);
+                        $("#memberNameValue").text(value.MemberName);
+                        $("#BP").val(value.BP);
+                        $("#RB").val(value.RB);
+                        $("#TotalAmount").val(value.TotalAmount);
+                        $("#TotalPV").val(value.TotalPV);
+                        $("#TotalBV").val(value.TotalBV);
+                        $("#DealerID").val(value.DealerID);
+                        $("#PaymentAddress").val(value.PaymentAddress);
+                        $("#ShipmentAddress").val(value.ShipmentAddress);
+                        $("#Quantity").val(value.Quantity);
+                    }
+                    else {
+                        newItem.push(value);
+                    }
+
+                });
+                addedItems = newItem;
+                ShowOnTable();
+            });
+
+
+        });
+
+    </script>
+
+}

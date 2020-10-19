@@ -1,0 +1,119 @@
+﻿.topbar-pagetitle{
+    text-transform:uppercase;
+    text-align:left;
+    padding:0 10px 0 10px;
+    color:brown;
+    font-weight:lighter;
+    font-size:24px;
+}
+
+.scroll{
+    max-height:1080px;
+    overflow-y:scroll;
+}
+
+.full-screen {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+    left: 0;
+}
+
+.no-padding-margin {
+    padding: 0;
+    margin: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+input{
+    padding:5px;
+}
+
+.card-padding{
+    padding:5px 0 5px 0;
+}
+
+/*[class*="col-"] {
+    padding: 0;
+    margin: 0;
+}*/
+
+input[type=text],select {
+    font-size: 10px !important;
+    color: #000066 !important;
+    margin: 2px !important;
+    padding: 2px 2px 2px 5px !important;
+    line-height: 12px !important;
+    height:3em !important;
+    
+}
+
+td {
+    font-size: 10px !important;
+    color: #000066 !important;
+}
+
+label {
+    font-size:10px !important;
+    font-weight:600 !important;
+}
+
+.form-group{
+    margin: 0;
+}
+
+[class="modal-header"] {
+    padding: 10px;
+    background-color: #ff8566;
+    color:#FFFFFF;
+    font-weight:bold;
+}
+
+.top-spacing{
+    margin-top:10px;
+}
+
+[class*="btn-"]{
+    font-weight:bold !important;
+}
+
+.dialog-bottom-controls{
+    padding:30px 15px 15px 15px;
+}
+
+.erp-logo{
+    font-size:24px;
+    font-weight:bold;
+    padding-right:20px;
+}
+
+a[menu-child]{
+    font-size:10px;
+}
+
+.dropdown-item{
+    font-size:10px !important;
+}
+
+.loading-animation{
+    visibility:hidden;
+}
+
+.report-container{
+    width:100%;
+    overflow:scroll;
+}
+
+
+
+
+
+

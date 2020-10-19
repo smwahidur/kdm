@@ -1,0 +1,49 @@
+﻿@model KDM.Models.MemberToUserViewModel
+
+@{
+    ViewBag.Title = "getMemberToUser";
+    Layout = "~/Views/Shared/_LayoutFramePage.cshtml";
+}
+
+@using (Html.BeginForm("getMemberToUser", "Member", FormMethod.Post, new { @name = "Member-getMemberToUser", @class = "", }))
+{
+    @Html.AntiForgeryToken()
+
+    if (ViewBag.EMsg != null)
+    {
+        <div class="alert alert-danger">@ViewBag.EMsg</div>
+    }
+    if (ViewBag.SMsg != null)
+    {
+        <div class="alert alert-danger">@ViewBag.SMsg</div>
+    }
+
+    <div class="col col-6">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MemberID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.MemberID, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.MemberID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Phone1, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Phone1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+

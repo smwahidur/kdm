@@ -1,0 +1,148 @@
+﻿@model KDM.Models.MapRoleModuleActionsViewModel
+@using KDM.Helpers
+
+@{
+    ViewBag.Title = "Map Role Module Action";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var mapList = (List<KDM.Models.MapRoleModuleActionsViewModel>)ViewBag.MapList;
+}
+
+<div class="row">
+
+    <div class="col col-sm-12">
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger fade show" role="alert">
+                <strong>@ViewBag.ErrorMessage</strong>
+            </div>
+
+            <div class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="DefaultMessageModalLabel" aria-hidden="true">
+                <div class="modal-body">
+                    <p><i class="icon-spinner icon-spin icon-4x"></i></p>
+                </div>
+            </div>
+        }
+
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div class="alert alert-success fade show" role="alert">
+                <strong>@ViewBag.SuccessMessage</strong>
+            </div>
+
+        }
+
+        @using (Html.BeginForm("MapRoleModuleAction", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="main-card card border border-success rounded-0">
+                <div class="card-body">
+                    <div class="card-title">
+                        MAP ROLE MODULE ACTIONS
+                    </div>
+                    <div class="row">
+                        <div class="form-group row justify-content-center col col-sm-6">
+                            @Html.LabelFor(m => m.Role, new { @class = "col-sm-3 col-form-label" })
+                            @Html.DropDownListFor(m => m.Role, ViewHelper.LoadRoles(), "--Select--", new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                            @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group row justify-content-center col col-sm-6">
+                            @Html.LabelFor(m => m.Module, new { @class = "col-sm-3 col-form-label" })
+                            @Html.DropDownListFor(m => m.Module, ViewHelper.LoadModules(), "--Select--", new { @onchange = "return LoadNextDropDown(this);", @target = "Controller", @class = "col-sm-8 form-control border border-success rounded-0" })
+                            @Html.ValidationMessageFor(m => m.Module, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group row justify-content-center col col-sm-6">
+                            @Html.LabelFor(m => m.Controller, new { @class = "col-sm-3 col-form-label" })
+                            @Html.DropDownListFor(m => m.Controller, new SelectList(Enumerable.Empty<SelectListItem>()), "--Select--", new { @onchange = "return LoadNextDropDown(this);", @area = "", @target = "Action", @controller = "Misc", @action = "LoadControllers", @class = "col-sm-8 form-control border border-success rounded-0" })
+                            @Html.ValidationMessageFor(m => m.Controller, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group row justify-content-center col col-sm-6">
+                            @Html.LabelFor(m => m.Action, new { @class = "col-sm-3 col-form-label" })
+                            @Html.DropDownListFor(m => m.Action, new SelectList(Enumerable.Empty<SelectListItem>()), "--Select--", new { @area = "", @controller = "Misc", @action = "LoadActions", @class = "col-sm-8 form-control border border-success rounded-0" })
+                            @Html.ValidationMessageFor(m => m.Action, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 dialog-bottom-controls">
+                        <input type="submit" value="Save" class="rounded-0 btn btn-success btn-lg active" />
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col col-sm-12">
+
+        <div class="main-card card border border-success rounded-0">
+            <div class="card-body">
+
+                <div class="card-title">
+                    MAPPINGS
+                </div>
+
+
+
+                @if (mapList.Count > 0)
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>SL#</th>
+                                <th>Role</th>
+                                <th>Module</th>
+                                <th>Controller</th>
+                                <th>Action</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var count = 1;
+                                var status = "Inactive";
+                                var color = "#ffffe6";
+                            }
+                            @foreach (var item in mapList)
+                            {
+
+                                <tr style="background-color:@color">
+                                    <td>@count</td>
+                                    <td>@item.Role</td>
+                                    <td>@item.Module</td>
+                                    <td>@item.Controller</td>
+                                    <td>@item.Action</td>
+                                    <td>
+
+                                        @using (Html.BeginForm("DeleteMapRoleModuleAction", "Account", new { id = item.Id, ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <input type="submit" class="btn btn-sm btn-danger" confirm value="Delete" class="dropdown-item" />
+                                        }
+
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                }
+                else
+                {
+                    <span>No mapping found</span>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

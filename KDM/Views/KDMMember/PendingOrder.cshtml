@@ -1,0 +1,82 @@
+﻿@using KDM.Models
+@model List<OrderViewModel>
+@{ ViewBag.Title = "OrderList"; }
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<div class="main-card card border border-success rounded-0">
+    <div class="card-body">
+
+        <div class="card-title">
+            MY PENDING ORDERS
+        </div>
+        <div class="row">
+            @if (ViewBag.EMsg != null)
+            {
+                <div class="alert alert-danger fade show" role="alert">
+                    <strong>@ViewBag.EMsg</strong>
+                </div>
+            }
+            @if (ViewBag.SMsg != null)
+            {
+                <div class="alert alert-success fade show" role="alert">
+                    <strong>@ViewBag.SMsg</strong>
+                </div>
+            }
+        </div>
+        
+        <table class="table table-bordered table-responsive">
+            
+            <thead>
+                <tr>
+                    <th style="width:7%;text-align:left;">Order Id</th>
+                    <th style="width:10%;text-align:center;">Member Id</th>
+                    <th style="width:20%;text-align:center;">Member Name</th>
+                    <th style="width:10%;text-align:center;">Order Date</th>                   
+                    <th style="width:5%;text-align:center;">Status</th>
+                    <th >Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width:7%;text-align:left;">@item.OrderID</td>
+                        <td style="width:10%;text-align:center;">@item.MemberID</td>
+                        <td style="width:20%;text-align:center;">@item.MembeName</td>
+                        <td style="width:10%;text-align:center;">@item.OrderDateTime.ToString("dd-MM-yyyy")</td>
+                      
+                        <td style="width:5%;text-align:center;">@item.OrderStatus</td>
+                        <td >
+                            @using (Html.BeginForm("InvoicedOrderDetails", "KDMMember", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="OrderID" value="@item.OrderID" />
+                                <input type="submit" name="btn-show-invoiced-order" value="Details" class="btn btn-primary btn-sm" />
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

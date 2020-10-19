@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "NotAuthorized";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger fade show" role="alert">
+        <strong>@ViewBag.ErrorMessage</strong>
+    </div>
+}
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success fade show" role="alert">
+        <strong>@ViewBag.SuccessMessage</strong>
+    </div>
+}
+
+

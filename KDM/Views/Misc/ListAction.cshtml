@@ -1,0 +1,54 @@
+﻿@model IEnumerable<KDM.tbl_actions>
+
+@{
+    ViewBag.Title = "ListAction";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "CreateAction")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            SL No
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Controller)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th></th>
+    </tr>
+    @using (Html.BeginForm("DeleteAction", "Misc", FormMethod.Post))
+    {
+
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" name="IDs" value="@item.Id" class="custom-checkbox chkCheckBoxId" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Controller)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+        <div class="btn-group">
+            <input type="submit" value="Delete All" />
+        </div>
+    }
+</table>
+<hr />

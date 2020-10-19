@@ -1,0 +1,80 @@
+﻿@using KDM.Models
+@model List<OrderViewModel>
+@{ 
+    ViewBag.Title = "Order List";
+    ViewBag.PageTitle = "ORDER MANAGEMENT";
+ }
+
+
+<div class="card border border-success rounded-0">
+    <div class="card-body">
+        <div class="card-title">Purchase Orders</div>
+        <div >
+            @if (ViewBag.EMsg != null)
+            {
+                <div class="alert alert-danger fade show" role="alert">
+                    <strong>@ViewBag.EMsg</strong>
+                </div>
+            }
+            @if (ViewBag.SMsg != null)
+            {
+                <div class="alert alert-success fade show" role="alert">
+                    <strong>@ViewBag.SMsg</strong>
+                </div>
+            }
+        </div>
+
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Member Id</th>
+                    <th>Member Name</th>
+                    <th>Order Date</th>
+                    <th>Order By</th>
+                    <th>Status</th>
+                    <th>Approve</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.OrderID</td>
+                        <td>@item.MemberID</td>
+                        <td>@item.MembeName</td>
+                        <td>@item.OrderDateTime.ToString("dd-MM-yyyy")</td>
+                        <td>@item.OrderBy</td>
+                        <td>@item.OrderStatus</td>
+                        <td>
+                            <div class="form-group row justify-content-center col col-sm-12">
+
+                                @using (Html.BeginForm("OrderApprove", "Order", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="OrderID" value="@item.OrderID" />
+                                    <input type="submit" name="btn-show-invoiced-order" value="Approve" class="btn btn-success btn-sm" />
+                                }
+                                @using (Html.BeginForm("OrderCencel", "Order", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="OrderID" value="@item.OrderID" />
+                                    <input type="submit" name="btn-show-invoiced-order" value="Cancel" class="btn btn-danger btn-sm" />
+                                }
+                                @using (Html.BeginForm("InvoicedOrderDetails", "Order", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="OrderID" value="@item.OrderID" />
+                                    <input type="submit" name="btn-show-invoiced-order" value="Details" class="btn btn-info btn-sm" />
+                                }
+
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

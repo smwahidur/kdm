@@ -1,0 +1,486 @@
+﻿@model KDM.Models.MemberRegistrationViewModel
+@{
+    ViewBag.Title = "AddMember";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    @using (Html.BeginForm("AddMember", "Member", FormMethod.Post, new {  }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col col-12 ">
+            @if (ViewBag.EMsg != null)
+            {
+                <div class="alert alert-danger">@ViewBag.EMsg</div>
+            }
+            @if (ViewBag.SMsg != null)
+            {
+                <div class="alert alert-success">@ViewBag.SMsg</div>
+            }
+        </div>
+   
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">ADD NEW MEMBER</div>
+                <div>
+                    <div class="row">
+
+                        <div class="col-sm-7">
+                            @Html.CheckBoxFor(m => m.WithPassword, new { @class = "" }) &nbsp; <span class="label text-danger">With Password</span>
+                        </div>
+                    </div>
+
+                    @*<div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.MemberID, "Sponsor ID", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.MemberID, new { @class = "form-control", @placeholder = "Member ID", @readonly="readonly" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.MemberID, "", new { @style = "color: red" })
+                    </div>*@
+
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.SponsorID, "Sponsor ID", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.SponsorID, new { @class = "form-control", @placeholder = "Sponsor ID" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.SponsorID, "", new { @style = "color: red" })
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.SponsorName, "Sponsor Username", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control", @placeholder = "Sponsor User Name", @Readonly = "Readonly" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.SponsorName, "", new { @style = "color: red" })
+                    </div>
+                    @*<div class="row">
+                            <div class="col-sm-4 label2">
+                                @Html.LabelFor(m => m.Position, "Position", new { @class = "label" })
+                            </div>
+                            <div class="col-sm-7">
+                                @Html.TextBoxFor(m => m.Position, new { @class = "textbox", @placeholder = "Position" })
+                                @Html.ValidationMessageFor(m => m.Position, "", new { @style = "color: red" })
+                            </div>
+                        </div>*@
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.DistributorName, "Distributor Name", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.DistributorName, new { @class = "form-control", @placeholder = "Distributor Name" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.DistributorName, "", new { @style = "color: red" })
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.FathersName, "Fathers Name", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.FathersName, new { @class = "form-control", @placeholder = "Fathers Name" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.FathersName, "", new { @style = "color: red" })
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.MothersName, "Mothers Name", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.MothersName, new { @class = "form-control", @placeholder = "Mothers Name" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.MothersName, "", new { @style = "color: red" })
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.PresentAddress, "Present Address", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.PresentAddress, new { @class = "form-control", @placeholder = "Present Address" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.PresentAddress, "", new { @style = "color: red" })
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.PermanentAddress, "Permanent Address", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.PermanentAddress, new { @class = "form-control", @placeholder = "Permanent Address" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.PermanentAddress, "", new { @style = "color: red" })
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.NID, "NID Number", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.NID, new { @class = "form-control", @placeholder = "NID Number" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.NID, "", new { @style = "color: red" })
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.Phone1, "Phone Number/User ID", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.Phone1, new { @class = "form-control only-numeric", @placeholder = "Phone Number/User ID", @required = "required" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Phone1, "", new { @style = "color: red" })
+                    </div>
+
+                    @*<div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.Phone1, "Password", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.UserPassword, new { @class = "form-control", @placeholder = "Password", @required = "required" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.UserPassword, "", new { @style = "color: red" })
+                    </div>*@
+
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.Phone2, "Secondary Phone Number", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.Phone2, new { @class = "form-control only-numeric", @placeholder = "Secondary Phone Number" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Phone2, "", new { @style = "color: red" })
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.NomineeName, "Nominee Name", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.NomineeName, new { @class = "form-control", @placeholder = "Nominee Name" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.NomineeName, "", new { @style = "color: red" })
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.RelationWithNominee, "Relation With Nominee", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.RelationWithNominee, new { @class = "form-control", @placeholder = "Relation With Nominee" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.RelationWithNominee, "", new { @style = "color: red" })
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 label2">
+                            @Html.LabelFor(m => m.NomineeNIDOrBirthCertificate, "Nominee NID Or Birth Certificate", new { @class = "label" })
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.NomineeNIDOrBirthCertificate, new { @class = "form-control only-numeric", @placeholder = "Nominee NID Or Birth Certificate" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.NomineeNIDOrBirthCertificate, "", new { @style = "color: red" })
+                    </div>
+                </div>
+                <div class="card-footer">
+
+                    <button id="save" class="btn btn-success btn-lg">Save</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card" style="padding:20px;">
+
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.PlacementID, "Placement ID", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.PlacementID, new { @class = "form-control", @placeholder = "Placement ID" })
+
+                </div>
+                @Html.ValidationMessageFor(m => m.PlacementID, "", new { @style = "color: red" })
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.LeftID, "Left ID", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.LeftID, new { @class = "form-control", @placeholder = "Left ID", @readonly = "readonly" })
+
+                </div>
+                @Html.ValidationMessageFor(m => m.LeftID, "", new { @style = "color: red" })
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.RightID, "Right ID", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.RightID, new { @class = "form-control", @placeholder = "Right ID", @readonly = "readonly" })
+
+                </div>
+                @Html.ValidationMessageFor(m => m.RightID, "", new { @style = "color: red" })
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 label2">
+                    @Html.LabelFor(m => m.PlacementPosition, "Right ID", new { @class = "label" })
+                </div>
+                <div class="col-sm-7">
+                    @Html.DropDownListFor(m => m.PlacementPosition, new List<SelectListItem>() { new SelectListItem() { Value = "Left", Text = "Left" }, new SelectListItem() { Value = "Right", Text = "Right" } }, new { @class = "form-control", @placeholder = "Right ID", @readonly = "readonly" })
+
+                </div>
+                @Html.ValidationMessageFor(m => m.PlacementPosition, "", new { @style = "color: red" })
+            </div>
+
+            <img id="Img" src="#" alt="your image" />
+            <input type='file' id="inputFile" onchange="readURL(this);" enctype="multipart/form-data" />
+        </div>
+    </div>
+
+</div>
+    }
+
+
+
+
+@section script
+{
+    <script>
+
+
+        $(function () {
+            
+            $("[name=PlacementID]").on('input', function () {    
+                var placementID = $(this).val();
+                var url ='@Url.Action("GetPlacementDetails", "Member")'+'?PlacementID=' + placementID;
+
+                $("[name=LeftID],[name=RightID]").attr("readonly", "readonly");
+                
+                $.get(url, function (response) {
+
+                    //response = JSON.parse(response);
+                    //console.log(response);
+
+                    //if (response.LeftID == undefined) {
+                    //    $("[name=LeftID]").prop("readonly", false); 
+                    //}
+
+                    //if (response.RightID == undefined) {
+                    //    $("[name=RightID]").prop("readonly", false); 
+                    //}
+
+                    $("[name=LeftID]").val(response.LeftID);
+                    $("[name=RightID]").val(response.RightID);
+
+                });
+
+            });
+
+        });
+
+        var isValid = true;
+        var member = { WithPassword:"false", ID: "", PlacementID: "", SponsorID: "", SponsorName: "", Position: "", DistributorName: "", FathersName: "", MothersName: "", PresentAddress: "", PermanentAddress: "", NID: "", Phone1: "", Phone2: "", NomineeName: "", RelationWithNominee: "", NomineeNIDOrBirthCertificate: "", CreateBy: "", CreateDate: "", PhotoID: "", Photo: "" };
+
+        /*$(document).on('focusout', "#SponsorID", function ()*/
+        $("[name=SponsorID]").on('input', function (){
+          //  alert();
+            var spId = $("#SponsorID").val();
+            if (spId != "") {
+                $.ajax({
+                    url: '@Url.Action("GetSponsorName", "Member")',
+                    contentType: "application/json;charset=utf-8",
+                    data: { spId: spId },
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (datas) {
+                        if (datas == 0) {
+                            //alert("This depot doesn't exist.");
+                        }
+                        else {
+                            $("#SponsorName").val(datas);
+                        }
+                    }
+                });
+            }
+            else {
+                alert("Sponsor not found.");
+            }
+        });
+
+        @*$(document).on('click', '#save', function () {
+            RemoveError();
+            $("#save").prop('disabled', true);
+            ValidateOnSaveClick();
+            //SetMember();
+            if (isValid == true) {
+                if (confirm('Do you want to save?')) {
+                    var data = new FormData();
+                    var files = $("#inputFile").get(0).files;
+                    data.append("Photo", files[0]);
+                    data.append("WithPassword", $('[name=WithPassword]').prop('checked'));
+                    data.append("SponsorID", $("#SponsorID").val());
+                    //data.append("SponsorName", $("#SponsorName").val());
+                    //data.append("Position", $("#Position").val());
+                    data.append("DistributorName", $("#DistributorName").val());
+                    data.append("FathersName", $("#FathersName").val());
+                    data.append("MothersName", $("#MothersName").val());
+                    data.append("PresentAddress", $("#PresentAddress").val());
+                    data.append("PermanentAddress", $("#PermanentAddress").val());
+                    data.append("NID", $("#NID").val());
+                    data.append("Phone1", $("#Phone1").val());
+                    data.append("Phone2", $("#Phone2").val());
+                    data.append("NomineeName", $("#NomineeName").val());
+                    data.append("RelationWithNominee", $("#RelationWithNominee").val());
+                    data.append("NomineeNIDOrBirthCertificate", $("#NomineeNIDOrBirthCertificate").val());
+
+                    $.ajax({
+                        url: '@Url.Action("SaveMember", "Member")',
+                        data: data,
+                        type: 'POST',
+                        contentType: false,
+                        processData: false,
+                        success: function (datas) {
+                            if (datas == 0) {
+                                alert("Failed To Saved.");
+                                $("#save").prop('disabled', false);
+                            }
+                            else {
+                                //alert("Sucessfully Saved.");
+                                //document.location = 'ShowPlacementId?placementId=' + datas.PlacementID;
+
+                                $("[name=NewPlacementID]").val(datas.PlacementID);
+                                alert("Congratulations, You got a new member id " + datas.PlacementID);
+
+                                $("#save").prop('disabled', true);
+                            }
+                        },
+                        error: function () {
+                            alert("Please check your internet connection first.")
+                            $("#save").prop('disabled', false);
+                        }
+                    });
+                }
+                else {
+                    $("#save").prop('disabled', false);
+                }
+            }
+            else {
+                $("#save").prop('disabled', false);
+            }
+
+        });*@
+
+        //get value from textbox
+        function SetMember() {
+            member.ID = 0;
+            member.SponsorID = $("#SponsorID").val();
+            member.SponsorName = $("#SponsorName").val();
+            member.Position = $("#Position").val();
+            member.DistributorName = $("#DistributorName").val();
+            member.FathersName = $("#FathersName").val();
+            member.MothersName = $("#MothersName").val();
+            member.PresentAddress = $("#PresentAddress").val();
+            member.PermanentAddress = $("#PermanentAddress").val();
+            member.NID = $("#NID").val();
+            member.Phone1 = $("#Phone1").val();
+            member.Phone2 = $("#Phone2").val();
+            member.NomineeName = $("#NomineeName").val();
+            member.RelationWithNominee = $("#RelationWithNominee").val();
+            member.NomineeNIDOrBirthCertificate = $("#NomineeNIDOrBirthCertificate").val();
+            //member.CreateBy = $("#CreateBy").val();
+            //member.CreateDate = $("#CreateDate").val();
+            //member.PhotoID = $("#PhotoID").val();
+            //member.Photo = $("#Photo").val();
+
+        }
+
+        function ValidateOnSaveClick() {
+            isValid = true;
+            if ($("#DistributorName").val() == "") {
+                setError("DistributorName", "Distributor Name is Required Field.");
+                isValid = false;
+            }
+            if ($("#FathersName").val() == "") {
+                setError("FathersName", "Fathers Name is required field.");
+                isValid = false;
+            }
+            if ($("#MothersName").val() == "") {
+                setError("MothersName", "Mothers Name is Required Field.");
+                isValid = false;
+            }
+            if ($("#Phone1").val() == "") {
+                setError("Phone1", "Phone1 is required field.");
+                isValid = false;
+            }
+
+        }
+
+        function setError(id, message) {
+            var span = $("span[data-valmsg-for=\"" + id + "\"]");
+            if (span && span.length > 0) {
+                $(span).html(message);
+                if (message && message != "") {
+                    $(span).removeClass("field-validation-valid");
+                    $(span).addClass("field-validation-no-valid");
+                } else {
+                    $(span).removeClass("field-validation-no-valid");
+                    $(span).addClass("field-validation-valid");
+                }
+            }
+        }
+
+        function RemoveError() {
+            $(".field-validation-error").text("");
+            $(".field-validation-no-valid").text("");
+        }
+
+        $(".only-numeric").bind("keypress", function (e) {
+            var keyCode = e.which ? e.which : e.keyCode
+
+            if (!(keyCode >= 48 && keyCode <= 57)) {
+                $(".error").css("display", "inline");
+                return false;
+            } else {
+                $(".error").css("display", "none");
+            }
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#Img')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+    </script>
+}
+
+
+

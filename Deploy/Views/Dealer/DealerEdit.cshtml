@@ -1,0 +1,132 @@
+﻿@using KDM.Models
+@model DealerVModel
+@using KDM.Helpers
+@{ ViewBag.Title = "DealerEdit"; }
+
+<div class="col-md-12">
+    @if (ViewBag.ErrorMessage != null)
+    {
+<div class="alert alert-danger fade show" role="alert">
+    <strong>@ViewBag.ErrorMessage</strong>
+</div>}
+    @if (ViewBag.SuccessMessage != null)
+    {
+<div class="alert alert-success fade show" role="alert">
+    <strong>@ViewBag.SuccessMessage</strong>
+</div>}
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">
+
+                @if (ViewBag.PanelTitles != null)
+                {@ViewBag.PanelTitles["DealerEdit"] }
+
+            else
+            { <span>START FROM HERE <b>&#11015;</b></span>}
+            </h5>
+
+            @using (Html.BeginForm("DealerEdit", "Dealer", FormMethod.Post, new { @class = "" }))
+            {
+@Html.AntiForgeryToken()
+                <div class="main-card card border border-success rounded-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div id="hideDealerID" class="form-group row justify-content-center col col-sm-9">
+                                @Html.TextBoxFor(m => m.DealerID, new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.DealerType, "Dealer Category", new { @class = "col-sm-3 col-form-label" })
+                                @Html.DropDownListFor(m => m.DealerType, ViewHelper.LoadDealerType(), "---Select---", new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                @Html.ValidationMessageFor(m => m.DealerType, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-2">
+                                Place for picture
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.Name, "Name", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.Name, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Name" })
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.District, "District", new { @class = "col-sm-3 col-form-label" })
+                                @Html.DropDownListFor(m => m.District, ViewHelper.LoadDistricts(), "---Select---", new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                @Html.ValidationMessageFor(m => m.District, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.Thana, "Thana", new { @class = "col-sm-3 col-form-label" })
+                                @Html.DropDownListFor(m => m.Thana, ViewHelper.LoadThana(), "---Select---", new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                @Html.ValidationMessageFor(m => m.Thana, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.DealerUnion, "Union", new { @class = "col-sm-3 col-form-label" })
+                                @Html.DropDownListFor(m => m.DealerUnion, ViewHelper.LoadUnion(), "---Select---", new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                @Html.ValidationMessageFor(m => m.DealerUnion, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.Address, "Address", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextAreaFor(m => m.Address, new { @class = "col-sm-8 form-control border border-success rounded-0", style = "font-size: 10px !important", @placeholder = "Address" })
+                                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.Phone1, "Phone1", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.Phone1, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Phone1" })
+                                @Html.ValidationMessageFor(m => m.Phone1, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.Phone2, "Phone2", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.Phone2, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Phone2" })
+                                @Html.ValidationMessageFor(m => m.Phone2, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.DateOfOperation, "Date Of Operation", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.DateOfOperation, new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                @Html.ValidationMessageFor(m => m.DateOfOperation, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.PrimaryDeposit, "Primary Deposit", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.PrimaryDeposit, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Primary Deposit", type = "number", style = "height: 3em !important;font-size: 10px !important;" })
+                                @Html.ValidationMessageFor(m => m.PrimaryDeposit, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-9">
+                                @Html.LabelFor(m => m.UserID, "User ID", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.UserID, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "User Id", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="position-relative form-group">
+                                    <input type="submit" value="Update" class="btn btn-success btn-lg btn-block" confirm="" />
+                                </div>}
+        </div>
+    </div>
+</div>
+
+
+@section script
+{
+    <script>
+        $(document).ready(function () {
+            $("#hideDealerID").hide();
+            if (@Model.DealerID != "") {
+                $("#DealerID").val(Model.DealerID);
+                $("#DealerType").val(Model.DealerType).change();
+                $("#Name").val(Model.Name);
+                $("#District").val(Model.District).change();
+                $("#Thana").val(Model.Thana).change();
+                $("#DealerUnion").val(Model.DealerUnion).change();
+                $("#Address").val(Model.Address);
+                $("#Phone1").val(Model.Phone1);
+                $("#Phone2").val(Model.Phone2);
+                $("#DateOfOperation").val(Model.DateOfOperation);
+                $("#PrimaryDeposit").val(Model.PrimaryDeposit);
+                $("#UserID").val(Model.UserID);
+            }
+        });
+        $("#Phone1").keyup(function () {
+            $("#UserID").val($("#Phone1").val());
+        });
+    </script>
+}
+
+

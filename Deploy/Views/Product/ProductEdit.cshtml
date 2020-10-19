@@ -1,0 +1,133 @@
+﻿@using KDM.Models
+@model ProductVModel
+@using KDM.Helpers
+@{ ViewBag.Title = "ProductEdit"; }
+
+<div class="col-md-12">
+    @if (ViewBag.ErrorMessage != null)
+    {
+<div class="alert alert-danger fade show" role="alert">
+    <strong>@ViewBag.ErrorMessage</strong>
+</div>}
+    @if (ViewBag.SuccessMessage != null)
+    {
+<div class="alert alert-success fade show" role="alert">
+    <strong>@ViewBag.SuccessMessage</strong>
+</div>}
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">
+
+                @if (ViewBag.PanelTitles != null)
+                {@ViewBag.PanelTitles["ProductEdit"] }
+
+            else
+            { <span>START FROM HERE <b>&#11015;</b></span>}
+            </h5>
+
+            @using (Html.BeginForm("ProductEdit", "Product", FormMethod.Post, new { @class = "" }))
+            {
+                 @Html.AntiForgeryToken()
+                                        <div class="main-card card border border-success rounded-0">
+                                            <div class="card-body">
+                                                <a href='@Url.Action("ProductList","Product")' class="col-sm-2 btn btn-success btn-lg btn-block">Go To Product List</a>
+                                                <br />
+                                                <div class="row">
+                                                    <div id="hideProductID" class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.TextBoxFor(m => m.ProductID, new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                                        @Html.TextBoxFor(m => m.CreateDate, new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                                        @Html.TextBoxFor(m => m.CreateBy, new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.ProductName, "Product Name", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.TextBoxFor(m => m.ProductName, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Product Name" })
+                                                        @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-2">
+                                                        Place for picture
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.Category, "Product Category", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.DropDownListFor(m => m.Category, ViewHelper.LoadProductCategory(), "---Select---", new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                                        @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.Type, "Product Type", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.DropDownListFor(m => m.Type, ViewHelper.LoadProductType(), "---Select---", new { @class = "col-sm-8 form-control border border-success rounded-0" })
+                                                        @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.Code, "Product Code", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.TextBoxFor(m => m.Code, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Product Code", @Readonly = "Readonly" })
+                                                        @Html.ValidationMessageFor(m => m.Code, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.MRP, "MRP", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.TextBoxFor(m => m.MRP, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "MRP", type = "number", min = 0, step = 0.01, style = "height: 3em !important;font-size: 10px !important;margin: 2px !important;" })
+                                                        @Html.ValidationMessageFor(m => m.MRP, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.WalletPrice, "Wallet Price", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.TextBoxFor(m => m.WalletPrice, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Wallet Price", type = "number", min = 0, step = 0.01, style = "height: 3em !important;font-size: 10px !important;margin: 2px !important;" })
+                                                        @Html.ValidationMessageFor(m => m.WalletPrice, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.PurchasePrice, "Purchase Price", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.TextBoxFor(m => m.PurchasePrice, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Purchase Price", type = "number", min = 0, step = 0.01, style = "height: 3em !important;font-size: 10px !important;margin: 2px !important;" })
+                                                        @Html.ValidationMessageFor(m => m.PurchasePrice, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.RB, "Repurchase Bonus (RB)", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.TextBoxFor(m => m.RB, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Repurchase Bonus (RB)", type = "number", style = "height: 3em !important;font-size: 10px !important;margin: 2px !important;" })
+                                                        @Html.ValidationMessageFor(m => m.RB, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.BP, "Bonus Point (BP)", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.TextBoxFor(m => m.BP, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Bonus Point (BP)", type = "number", style = "height: 3em !important;font-size: 10px !important;margin: 2px !important;" })
+                                                        @Html.ValidationMessageFor(m => m.BP, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.Quantity, "Quantity", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.TextBoxFor(m => m.Quantity, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Quantity", type = "number", style = "height: 3em !important;font-size: 10px !important;margin: 2px !important;" })
+                                                        @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group row justify-content-center col col-sm-9">
+                                                        @Html.LabelFor(m => m.ProductDetails, "Product Details", new { @class = "col-sm-3 col-form-label" })
+                                                        @Html.TextAreaFor(m => m.ProductDetails, new { @class = "col-sm-8 form-control border border-success rounded-0", style = "font-size: 10px !important; margin: 2px !important;", @placeholder = "ProductDetails" })
+                                                        @Html.ValidationMessageFor(m => m.ProductDetails, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="position-relative form-group" style="width:50%;">
+                                                    <input type="submit" value="Update Product" class="col-sm-3 btn btn-success btn-lg btn-block" style="margin-left:42%;" confirm="" />
+                                                </div>
+                                            </div>
+                                        </div>}
+        </div>
+    </div>
+</div>
+
+@section script
+{
+    <script>
+        $(document).ready(function () {
+            $("#hideProductID").hide();
+            if ("@Model.ProductID" != "") {
+                $("#ProductID").val(Model.ProductID);
+                $("#ProductName").val(Model.ProductName);
+                $("#Category").val(Model.Category).change();
+                $("#Type").val(Model.Type).change();
+                $("#Code").val(Model.Code);
+                $("#MRP").val(Model.MRP);
+                $("#WalletPrice").val(Model.WalletPrice);
+                $("#PurchasePrice").val(Model.PurchasePrice);
+                $("#RB").val(Model.RB);
+                $("#Quantity").val(Model.Quantity);
+                $("#ProductDetails").val(Model.ProductDetails);
+                $("#CreateDate").val(Model.CreateDate);
+                $("#CreateBy").val(Model.CreateBy);
+            }
+        });
+    </script>
+}
+

@@ -1,0 +1,167 @@
+﻿@model KDM.Models.CommonSearchVModel
+@{
+    ViewBag.Title = "CompanyFundHistory";
+}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<div class="col-md-12">
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">
+
+                @if (ViewBag.PanelTitles != null)
+                {@ViewBag.PanelTitles["FundHistory"] }
+
+            else
+            { <span>START FROM HERE <b>&#11015;</b></span>}
+            </h5>
+            <div class="main-card card border border-success rounded-0">
+                <div class="card-body">
+                    <div class="col-md-12">
+                        @using (Html.BeginForm("SearchFund", "CompanyFund", FormMethod.Post, new { @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="form-group row justify-content-center col-sm-4">
+                                        @Html.LabelFor(m => m.FDate, "From Date :", new { @class = "col-sm-4 col-form-label" })
+                                        @Html.TextBoxFor(m => m.FDate, new { @datepicker = "", @class = "col-sm-6 form-control border border-success rounded-0", @Value = ViewBag.fDate.ToString("dd-MM-yyyy") })
+                                    </div>
+                                    <div class="form-group row justify-content-center col-sm-4">
+                                        @Html.LabelFor(m => m.TDate, "To Date :", new { @class = "col-sm-4 col-form-label" })
+                                        @Html.TextBoxFor(m => m.TDate, new { @datepicker = "", @class = "col-sm-6 form-control border border-success rounded-0", @Value = ViewBag.tDate.ToString("dd-MM-yyyy") })
+                                    </div>
+                                    <div class="form-group row justify-content-center col-sm-2">
+                                        <input type="submit" value="Search" class="col-sm-12 btn btn-success btn-lg btn-block" style="padding-top: 3%;height: 30px !important;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        }
+                        <table class="table table-responsive" id="FundHistoryList">
+                            <thead>
+                                <tr>
+                                    <th style="width:15%;text-align:center;">Fund Name</th>
+                                    <th style="width:10%;text-align:right;">Fund Amount</th>
+                                    <th style="width:10%;text-align:right;">Fund Total Amount</th>
+                                    <th style="width:10%;text-align:right;">Fund Unit Amount</th>
+                                    <th style="width:10%;text-align:right;">PV Used</th>
+                                    <th style="width:10%;text-align:right;">PV Unit</th>
+                                    <th style="width:10%;text-align:center;">Fund From</th>
+                                    <th style="width:12%;text-align:center;">Fund From ID</th>
+                                    <th style="width:13%;text-align:center;">Create Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.FundHistoryList)
+                                {
+                                    <tr @*class='clickable-row' value="@item.Id"*@>
+                                        <td style="width:15%;text-align:center;">@item.FundName</td>
+                                        <td style="width:10%;text-align:right;">@item.FundAmount</td>
+                                        <td style="width:10%;text-align:right;">@item.FundTotalAmount</td>
+                                        <td style="width:10%;text-align:right;">@item.FundUnitAmount</td>
+                                        <td style="width:10%;text-align:right;">@item.PVUsed</td>
+                                        <td style="width:10%;text-align:right;">@item.PVUnit</td>
+                                        <td style="width:10%;text-align:center;">@item.FundFrom</td>
+                                        <td style="width:12%;text-align:center;">@item.FundFromID</td>
+                                        <td style="width:13%;text-align:center;">@item.CreateDate.ToString("dd-MM-yyyy")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="position-relative form-group" style="width:10%;margin-left: 40%;">
+                            <a href="javascript:printDiv('div3')"><input type="button" value="Print" id="print" class="btn btn-success btn-lg btn-block" /></a>
+                        </div>
+                        <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*code for print*@
+<div class="main-card card border border-success rounded-0" id="div3">
+    <div class="card-body">
+        <div class="col-md-12">
+            <p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;From Date:&ensp;@ViewBag.fDate.ToString("dd-MM-yyyy") &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;To Date:&ensp;@ViewBag.tDate.ToString("dd-MM-yyyy")</p>
+            <hr />
+            <table class="table table-responsive" id="FundHistoryList">
+                <thead>
+                    <tr>
+                        <th style="width:15%;text-align:center;">Fund Name</th>
+                        <th style="width:10%;text-align:right;">Fund Amount</th>
+                        <th style="width:10%;text-align:right;">Fund Total Amount</th>
+                        <th style="width:10%;text-align:right;">Fund Unit Amount</th>
+                        <th style="width:10%;text-align:right;">PV Used</th>
+                        <th style="width:10%;text-align:right;">PV Unit</th>
+                        <th style="width:10%;text-align:center;">Fund From</th>
+                        <th style="width:12%;text-align:center;">Fund From ID</th>
+                        <th style="width:13%;text-align:center;">Create Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.FundHistoryList)
+                    {
+                        <tr @*class='clickable-row' value="@item.Id"*@>
+                            <td style="width:15%;text-align:center;">@item.FundName</td>
+                            <td style="width:10%;text-align:right;">@item.FundAmount</td>
+                            <td style="width:10%;text-align:right;">@item.FundTotalAmount</td>
+                            <td style="width:10%;text-align:right;">@item.FundUnitAmount</td>
+                            <td style="width:10%;text-align:right;">@item.PVUsed</td>
+                            <td style="width:10%;text-align:right;">@item.PVUnit</td>
+                            <td style="width:10%;text-align:center;">@item.FundFrom</td>
+                            <td style="width:12%;text-align:center;">@item.FundFromID</td>
+                            <td style="width:13%;text-align:center;">@item.CreateDate.ToString("dd-MM-yyyy")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section script{
+
+    <script>
+
+        //$(function () {
+        //    $('#FundHistoryList').DataTable({
+        //        'paging': true,
+        //        'lengthChange': false,
+        //        'searching': false,
+        //        'ordering': true,
+        //        'info': true,
+        //        'autoWidth': false
+        //    })
+        //})
+
+        function printDiv(divId) {
+            window.frames["print_frame"].document.body.innerHTML = document.getElementById(divId).innerHTML;
+            window.frames["print_frame"].window.focus();
+            window.frames["print_frame"].window.print();
+        }
+
+        $(document).ready(function () {
+            $("#div3").hide();
+        });
+    </script>
+}

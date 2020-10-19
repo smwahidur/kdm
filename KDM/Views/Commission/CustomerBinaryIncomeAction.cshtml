@@ -1,0 +1,48 @@
+﻿@model IEnumerable<KDM.tbl_binary_matching_data>
+
+@{
+    ViewBag.Title = "CustomerBinaryIncomeAction";
+    Layout = "~/Views/Shared/_LayoutFramePage.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        
+        <th>
+           Process Number
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProcessDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MatchingCount)
+        </th>
+        <th>
+            Account Transfered
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.BPCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProcessDate)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.MatchingCount)
+        </td>
+        
+        <td>
+            @{ var total = item.MatchingCount * 500; }
+            @total
+        </td>
+        
+    </tr>
+}
+
+</table>

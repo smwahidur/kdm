@@ -1,0 +1,68 @@
+﻿@using KDM.Models
+@model List<OrderViewModel>
+@{ ViewBag.Title = "OrderList"; }
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<body>
+    <p style="font-weight:bold;text-align:center;padding:0%;font-size:20px;">Order History</p>
+    <hr />
+    <span id="" ></span>
+    <table style="width:100%;">
+        <thead>
+            <tr>
+                <th style="width:7%;text-align:left;">Order Id</th>
+                <th style="width:10%;text-align:center;">Customer Id</th>
+                <th style="width:20%;text-align:center;">Items</th>
+                <th style="width:10%;text-align:center;">Amount</th>
+                <th style="width:15%;text-align:center;">Product Type</th>
+                <th style="width:10%;text-align:center;">RB</th>
+                <th style="width:5%;text-align:center;">Status</th>
+                <th style="width:23%;text-align:center;">Approve</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td style="width:7%;text-align:left;">@item.OrderID</td>
+    <td style="width:10%;text-align:center;">@item.DealerID</td>
+    <td style="width:20%;text-align:center;">@item.ProductCode</td>
+    <td style="width:10%;text-align:center;">@item.TotalAmount</td>
+    <td style="width:15%;text-align:center;">@item.ProductTypeID</td>
+    <td style="width:10%;text-align:center;">@item.RB</td>
+    <td style="width:5%;text-align:center;">@item.OrderStatus</td>
+    <td style="width:23%;text-align:center;">
+        <div class="row" style="padding: 0%;">
+            <div class="form-group row justify-content-center col col-sm-12">
+                <a href='@Url.Action("OrderApprove","Order",new {OrderId=item.OrderID})' class="col-sm-3 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: limegreen;" confirm="">Approve</a>
+                <a href='@Url.Action("OrderCencel","Order",new {OrderId=item.OrderID})' class="col-sm-3 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: indianred;" confirm="">Cencel</a>
+                <a href='@Url.Action("OrderDetailsFromList","Order",new {OrderId=item.OrderID})' class="col-sm-6 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;">Show Details</a>
+            </div>
+        </div>
+
+    </td>
+</tr>
+}
+        </tbody>
+    </table>
+</body>
+
+

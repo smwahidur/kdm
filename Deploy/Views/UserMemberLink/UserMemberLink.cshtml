@@ -1,0 +1,72 @@
+﻿@model KDM.Models.UserMemberLinkVModel
+@{
+    ViewBag.Title = "UserMemberLink";
+}
+
+
+<div class="col-md-6">
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger fade show" role="alert">
+            <strong>@ViewBag.ErrorMessage</strong>
+        </div>
+    }
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success fade show" role="alert">
+            <strong>@ViewBag.SuccessMessage</strong>
+        </div>
+    }
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">
+
+                @if (ViewBag.PanelTitles != null)
+                {@ViewBag.PanelTitles["UserMemberLink"] }
+
+            else
+            { <span>START FROM HERE <b>&#11015;</b></span>}
+            </h5>
+
+            @using (Html.BeginForm("UserMemberLink", "UserMemberLink", FormMethod.Post, new { @class = "" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="main-card card border border-success rounded-0">
+                    <div class="card-body">
+                        <div class="row">
+                            @{ 
+                                List<string> roles = ViewBag.Role;
+                            }
+                            @if (roles.Contains("ADMIN"))
+                            {
+                                <div class="form-group row justify-content-center col col-sm-12">
+                                    @Html.LabelFor(m => m.UserName, "User Name", new { @class = "col-sm-3 col-form-label" })
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "User Name" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group row justify-content-center col col-sm-12">
+                                    @Html.LabelFor(m => m.UserName, "User Name", new { @class = "col-sm-3 col-form-label" })
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "User Name", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            }
+
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.MemberId, "Member Id", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.MemberId, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Member Id" })
+                                @Html.ValidationMessageFor(m => m.MemberId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="position-relative form-group">
+                    <input type="submit" value="ADD" class="btn btn-success btn-lg btn-block" confirm="" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

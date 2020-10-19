@@ -1,0 +1,100 @@
+﻿@model KDM.Models.TransectionVModel
+@using KDM.Helpers
+@*@{
+    ViewBag.Title = "CreateOrder";
+}*@
+
+<div class="col-md-10">
+    @if (ViewBag.EMsg != null)
+    {
+        <div class="alert alert-danger fade show" role="alert">
+            <strong>@ViewBag.EMsg</strong>
+        </div>
+    }
+    @if (ViewBag.SMsg != null)
+    {
+        <div class="alert alert-success fade show" role="alert">
+            <strong>@ViewBag.SMsg</strong>
+        </div>
+    }
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">
+
+                @if (ViewBag.PanelTitles != null)
+                {@ViewBag.PanelTitles["PaymentWithdraw"] }
+
+            else
+            { <span>START FROM HERE <b>&#11015;</b></span>}
+            </h5>
+
+            @using (Html.BeginForm("Withdraw", "Payment", FormMethod.Post, new { @class = "" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="main-card card border border-success rounded-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.MemberID, "Member ID", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.MemberID, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Member ID", style = "height: 3em !important;font-size: 10px !important;" })
+                                @Html.ValidationMessageFor(m => m.MemberID, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.MemberName, "Member Name", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.MemberName, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Member Name", style = "height: 3em !important;font-size: 10px !important;", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.MemberName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.DebitAccount, "Debit Account", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.DebitAccount, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Debit Account", style = "height: 3em !important;font-size: 10px !important;" })
+                                @Html.ValidationMessageFor(m => m.DebitAccount, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.CreditACcount, "Credit Account", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.CreditACcount, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Credit Account", style = "height: 3em !important;font-size: 10px !important;" })
+                                @Html.ValidationMessageFor(m => m.CreditACcount, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.Amount, "Account", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.Amount, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Amount", type = "number", style = "height: 3em !important;font-size: 10px !important;" })
+                                @Html.ValidationMessageFor(m => m.Amount, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.Particulars, "Particulars", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextAreaFor(m => m.Particulars, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Particulars", style = "height: 3em !important;font-size: 10px !important;" })
+                                @Html.ValidationMessageFor(m => m.Particulars, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="position-relative form-group">
+                    <input type="submit" value="Save" class="btn btn-success btn-lg btn-block" confirm="" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section script{
+
+
+    <script type="text/javascript">
+
+    $(function () {
+
+        $("[name=MemberID]").on('input', function () {
+
+            var spId = $(this).val().trim();
+            var url = '@Url.Action("GetSponsorName", "Member")' + '?spId=' + spId;
+
+            $.get(url, function (data) {
+                if (data != "") {
+                    $("#MemberName").val(data);
+                }
+            });
+        });
+    });
+
+    </script>
+
+}

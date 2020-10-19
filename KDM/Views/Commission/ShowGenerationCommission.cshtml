@@ -1,0 +1,121 @@
+﻿@model IEnumerable<KDM.tbl_binary_matching_data>
+
+@{
+    ViewBag.Title = "ShowGenerationCommission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    div.dataTables_wrapper {
+        width: 1000px;
+        margin: 0 auto;
+    }
+</style>
+
+<div class="main-card card border border-success rounded-0">
+    <div class="card-body">
+        <h4>Show Generation Commission</h4>
+        <div class="main-card card border border-success rounded-0">
+            <div class="card-body">
+                <table class="display" id="generationCommission" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Placement ID
+                            </th>
+                            <th>
+                                BP Code
+                            </th>
+                            <th>
+                                Process Date
+                            </th>
+                            <th>
+                                Inputer ID
+                            </th>
+                            <th>
+                                Authorizer ID
+                            </th>
+                            <th>
+                                Before Left Point
+                            </th>
+                            <th>
+                                Before Right Point
+                            </th>
+                            <th>
+                                Matching Count
+                            </th>
+                            <th>
+                                After Left Point
+                            </th>
+                            <th>
+                                After Right Point
+                            </th>
+                            <th>
+                                Posting Date
+                            </th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PlacementID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BPCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProcessDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.InputerID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AuthorizerID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BLeftPoint)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BRightPoint)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MatchingCount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ALeftPoint)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ARightPoint)
+                                </td>
+                                <td>
+                                    @string.Format("{0:dd-MM-yyyy}", item.PostingDate)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@section script{
+
+    <script>
+        $(document).ready(function () {
+            $('#generationCommission').DataTable({
+                "scrollY": "450px",
+                "scrollCollapse": true,
+                "paging": false
+            });
+        });
+
+    </script>
+}

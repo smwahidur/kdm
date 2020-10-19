@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "SetPoints";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+
+    <div class="col col-6">
+
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Set Member Points</div>
+
+                @if (ViewBag.SuccessMessage!=null)
+                {
+                    <div class="alert-success">@ViewBag.SuccessMessage</div>
+                }
+                @if (ViewBag.ErrorMessage!=null)
+                {
+                    <div class="alert-danger">@ViewBag.ErrorMessage</div>
+                }
+
+
+                @using (Html.BeginForm("SetPoints", "Member", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <label for="MemberID" class="col-form-label">Member ID</label>
+                        <input type="text" class="form-control" name="MemberID" />
+
+                    </div>
+                    <div class="form-group">
+                        <label for="PV" class="col-form-label">Member PV</label>
+                        <input type="text" class="form-control" name="PV" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BV" class="col-form-label">Member BV</label>
+                        <input type="text" class="form-control" name="BV" />
+                    </div>
+
+                    <input type="submit" value="Save" class="btn btn-primary" />
+
+                }
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+

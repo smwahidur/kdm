@@ -1,0 +1,67 @@
+﻿@model List<KDM.tbl_file_details>
+@{
+    ViewBag.Title = "FileList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<div class="main-card card border border-success rounded-0">
+    <div class="card-body">
+        <p style="font-weight:bold;text-align:center;padding:0%;font-size:20px;">File List</p>
+        <hr />
+        <span id=""></span>
+        <table style="width:100%;">
+            <thead>
+                <tr>
+                    <th style="width:20%;text-align:center;">File Note</th>
+                    <th style="width:20%;text-align:center;">File Name</th>
+                    <th style="width:20%;text-align:center;">Upload Date</th>
+                    <th style="width:20%;text-align:center;">Upload By</th>
+                    <th style="width:20%;text-align:center;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width:20%;text-align:center;">@item.FileNote</td>
+                        <td style="width:20%;text-align:center;">@item.FileName</td>
+                        <td style="width:20%;text-align:center;">@item.UploadDate</td>
+                        <td style="width:20%;text-align:center;">@item.UploadBy</td>
+                        <td style="width:20%;text-align:center;">
+                            <div class="row" @*style="padding-left: 0%;"*@>
+                                <div class="form-group row justify-content-center col col-sm-12">
+                                    <a href='@Url.Action("ViewFile", "Notice", new { fileName = @item.FileName })' class="col-sm-4 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: limegreen;">View</a>
+                                    <a href='@Url.Action("DownloadFile", "Notice", new { fileName = @item.FileName })' class="col-sm-4 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: limegreen;">Download</a>
+                                    <a href='@Url.Action("Deletefile", "Notice", new { fileName = @item.FileName })' class="col-sm-4 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: indianred;" confirm="">Delete</a>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

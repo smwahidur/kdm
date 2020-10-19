@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "SearchUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var UserName = ViewBag.UserName;
+    var UserID = ViewBag.UserID;
+    var UserRoles = ViewBag.Roles;
+}
+
+<div class="row">
+
+    <div class="col col-12 ">
+        @if (ViewBag.EMsg != null)
+        {
+            <div class="alert alert-danger">@ViewBag.EMsg</div>
+        }
+        @if (ViewBag.SMsg != null)
+        {
+            <div class="alert alert-success">@ViewBag.SMsg</div>
+        }
+        @if (ViewBag.WMsg != null)
+        {
+            <div class="alert alert-warning">@ViewBag.WMsg</div>
+        }
+    </div>
+
+    <div class="card col-6">
+        <div class="card-body">
+            <div class="card-title"> SEARCH USER </div>
+
+            @using (Html.BeginForm("SearchUser", "Account", FormMethod.Post, new { @class = "form-inline" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-4">
+                        <label>User Name</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="UserName" class="form-control" />
+                        <input type="submit" class="btn btn-success" value="Search" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    @if (!String.IsNullOrWhiteSpace(UserName))
+    {
+        <div class="card col-6">
+            <div class="card-body">
+                <div class="card-title">User Details</div>
+
+                <div class="row">
+                    <div class="col-2">User Name</div>
+                    <div class="col-6">@UserName</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-2">Roles</div>
+                    <div class="col-6">
+
+                        @foreach (var role in UserRoles)
+                        {
+                            <span class="badge badge-success">@role</span>
+                        }
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        @using (Html.BeginForm("UserDelete", "Account", FormMethod.Post, new { @confirm = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="UserID" value="@UserID" />
+                            <input type="submit" class="btn btn-lg btn-block btn-danger" value="Delete This User" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

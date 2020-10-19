@@ -1,0 +1,138 @@
+﻿@using KDM.Models
+@model ProductVModel
+@{ ViewBag.Title = "ProductDetails"; }
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        /*border: 1px solid #dddddd;*/
+        text-align: left;
+        padding: 14px;
+        font-weight: bold;
+        font-size: .88rem !important;
+        color: #495057 !important;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<div id="div3">
+    <p style="text-align:center;padding:0%;font-size:20px;">Product Details</p>
+    <hr />
+    <table style="width:100%;">
+        <a href='@Url.Action("ProductList","Product")' class="col-sm-2 btn btn-success btn-lg btn-block">Go To Product List</a>
+        <thead>
+            <tr>
+                <th style="width:20%;text-align:left;"></th>
+                <th style="width:1%;text-align:center;"></th>
+                <th style="text-align:center;"></th>
+                <th style="width:15%;text-align:center;"></th>
+                <th style="width:1%;text-align:center;"></th>
+                <th style="text-align:center;"></th>
+                <th style="width:15%;text-align:left;"></th>
+                <th style="width:1%;text-align:center;"></th>
+                <th style="text-align:center;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="line-height: 14px; height: 14px;">
+                <td style="border:none;text-align:left;">Product Code</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;font-weight: bold;">@Model.Code</td>
+                <td style="border:none;text-align:left;"></td>
+                <td style="border:none;text-align:left;"></td>
+                <td style="text-align:left;"></td>
+                <td style="border:none;text-align:left;"></td>
+                <td style="text-align:left;"></td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 14px; height: 14px;">
+                <td style="border:none;text-align:left;">Product Name</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.ProductName</td>
+                <td style="border:none;text-align:left;">Product Category</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.CategoryName</td>
+                <td style="border:none;text-align:left;">Product Type</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.TypeName</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 14px; height: 14px;">
+                <td style="border:none;text-align:left;">Product MRP</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.MRP</td>
+                <td style="border:none;text-align:left;">Wallet Price</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.WalletPrice</td>
+                <td style="border:none;text-align:left;">Purchase Price</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.PurchasePrice</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 14px; height: 14px;">
+                <td style="border:none;text-align:left;">Repurchase Bonus (RB)</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.RB</td>
+                <td style="border:none;text-align:left;">Bonus Point (BP)</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.BP</td>
+                <td style="border:none;text-align:left;">Quantity</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.Quantity</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 14px; height: 14px;">
+                <td style="border:none;text-align:left;">Created By</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.CreateBy</td>
+                <td style="border:none;text-align:left;">Created Date</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.CreateDate.ToString("dd-MM-yyyy")</td>
+                <td style="border:none;text-align:left;"></td>
+                <td style="text-align:left;"></td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 14px; height: 14px;">
+                <td style="border:none;text-align:left;">Product Details</td>
+                <td style="border:none;text-align:left;">:</td>
+                <td style="text-align:left;">@Model.ProductDetails</td>
+                <td style="border:none;text-align:left;"></td>
+                <td style="text-align:left;"></td>
+                <td style="border:none;text-align:left;"></td>
+                <td style="text-align:left;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+</div>
+<div class="position-relative form-group" style="width:10%;margin-left: 20%;">
+    <a href="javascript:printDiv('div3')"><input type="button" value="Print" id="print" class="btn btn-success btn-lg btn-block" /></a>
+</div>
+<iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+
+
+@section script
+{
+    <script>
+        function printDiv(divId) {
+            window.frames["print_frame"].document.body.innerHTML = document.getElementById(divId).innerHTML;
+            window.frames["print_frame"].window.focus();
+            window.frames["print_frame"].window.print();
+        }
+    </script>
+}
+

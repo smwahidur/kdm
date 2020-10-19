@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Process Controls
+                </div>
+
+                @if(ViewBag.SuccessMessage!=null)
+                {
+                    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+                }
+
+
+                @using (Html.BeginForm("StartBinaryProcess", "Process", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Start Binary Process" name="btn-start-binary-process" class="btn btn-success" />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

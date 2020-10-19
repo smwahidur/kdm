@@ -1,0 +1,76 @@
+﻿@model IEnumerable<KDM.tbl_member_leadeship_position>
+
+@{
+    ViewBag.Title = "Position";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+    <div class="main-card card border border-success rounded-0 col-md-12">
+
+        <div class="card">
+
+
+            <div class="card-header">
+
+                <div class="form-group row justify-content-center ">
+                  
+                </div>
+            </div>
+
+            <div class="card-body">
+
+                <table class="table">
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.PreMatching)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CurMatching)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalMatching)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastUpdate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PreMatching)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CurMatching)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalMatching)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastUpdate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position)
+                            </td>
+
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+
+

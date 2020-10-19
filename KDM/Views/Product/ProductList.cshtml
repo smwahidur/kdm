@@ -1,0 +1,131 @@
+﻿@using KDM.Models
+@model List<ProductVModel>
+@using KDM.Helpers
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col">
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                PRODUCTS LIST
+            </div>
+
+            @using (Html.BeginForm("SearchProduct", "Product", FormMethod.Post, new { @class = "" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group row justify-content-center col-sm-5">
+                            <label for="ProductName" class="col-sm-4 col-form-label">Product Name:</label>
+                            <input type="text" id="ProductName" name="ProductName" class="col-sm-6 form-control border border-success rounded-0"><br><br>
+                        </div>
+                        <div class="form-group row justify-content-center col-sm-5">
+                            <label for="Type" class="col-sm-4 col-form-label">Product Type:</label>
+                            @Html.DropDownList("Type", ViewHelper.LoadProductType(), "---Select---", new { @class = "col-sm-6 form-control border border-success rounded-0" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group row justify-content-center col-sm-5">
+                            <label for="Code" class="col-sm-4 col-form-label">Product Code:</label>
+                            <input type="text" id="Code" name="Code" class="col-sm-6 form-control border border-success rounded-0"><br><br>
+                        </div>
+                        <div class="form-group row justify-content-center col-sm-5">
+                            <input type="submit" value="Search" class="col-sm-3 btn btn-success btn-lg btn-block" style="margin-left: 10%;height: 40px !important;" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group row justify-content-center col-sm-5">
+                            <label for="Category" class="col-sm-4 col-form-label">Product Category:</label>
+                            @Html.DropDownList("Category", ViewHelper.LoadProductCategory(), "---Select---", new { @class = "col-sm-6 form-control border border-success rounded-0" })
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <br />
+            }
+
+            @{
+                int slNo = 0;
+            }
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:auto;text-align:center;">Sl#</th>
+                        <th style="width:auto;text-align:center;">Photo</th>
+                        <th style="width:auto;text-align:center;">Name</th>
+                        <th style="width:auto;text-align:center;">Code</th>
+                        <th style="width:auto;text-align:center;">Category</th>
+                        <th style="width:auto;text-align:center;">Purchase </th>
+                        <th style="width:auto;text-align:center;">SP</th>
+                        <th style="width:auto;text-align:center;">MRP</th>
+                        <th style="width:auto;text-align:center;">DP</th>
+                        <th style="width:auto;text-align:center;">Wallet Price</th>
+                        <th style="width:auto;text-align:center;">PV</th>
+                        <th style="width:auto;text-align:center;">BV</th>
+                        <th style="width:auto;text-align:center;">Quantity</th>
+                        <th style="width:auto;text-align:center;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        slNo = slNo + 1;
+                    <tr>
+                        <td style="width:auto;text-align:center;">@slNo</td>
+                        <td style="width:auto;text-align:center;">@*@item.Photo*@</td>
+                        <td style="width:auto;text-align:center;">@item.ProductName</td>
+                        <td style="width:auto;text-align:center;">@item.Code</td>
+                        <td style="width:auto;text-align:center;">@item.CategoryName</td>
+
+                        <td style="width:auto;text-align:center;">@item.PurchasePrice</td>
+                        <td style="width:auto;text-align:center;">@item.StokishPrice</td>
+                        <td style="width:auto;text-align:center;">@item.MRP</td>
+                        <td style="width:auto;text-align:center;">@item.DistributorPrice</td>
+                        <td style="width:auto;text-align:center;">@item.WalletPrice</td>
+
+                        <td style="width:auto;text-align:center;">@item.BP</td>
+                        <td style="width:auto;text-align:center;">@item.RB</td>
+
+
+
+                        <td style="width:auto;text-align:center;">@item.Quantity</td>
+                        <td style="width:auto;text-align:center;">
+                            <div class="row" style="padding: 0%;">
+                                <div class="form-group row justify-content-center col col-sm-12">
+                                    <a href='@Url.Action("ProductEdit","Product",new {productId=item.ProductID})' class="col-sm-4 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: limegreen;">Edit</a>
+                                    <a href='@Url.Action("ProductDelete","Product",new {productId=item.ProductID})' class="col-sm-4 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: indianred;" confirm="">Delete</a>
+                                    <a href='@Url.Action("ProductDetails","Product",new {productId=item.ProductID})' class="col-sm-6 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;">Show Details</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+@section script
+{
+    <script>
+       $(document).ready(function () {
+           $("#ProductName").val("@ViewBag.pName");
+           $("#Type").val("@ViewBag.pType").change();
+           $("#Code").val("@ViewBag.pCode");
+           $("#Category").val("@ViewBag.pCategory").change();
+       });
+
+    </script>
+}
+

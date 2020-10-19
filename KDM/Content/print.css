@@ -1,0 +1,78 @@
+﻿@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    .section-to-print, .section-to-print * {
+        visibility: visible;
+        
+    }
+
+    .print_letter_head {
+        padding-bottom: 15px;
+    }
+
+    .section-to-print {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    a[href]:after {
+        content: none !important;
+    }
+
+    .print-content td{
+        font-size:8px;
+    }
+}
+
+@media screen {
+    .print_letter_head {
+        display: none;
+    }
+
+    
+}
+
+@page :left {
+    margin: 0.5cm;
+}
+
+@page :right {
+    margin: 0.8cm;
+}
+
+
+@page {
+    size: A4 portrait;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin: 0;
+    -webkit-print-color-adjust: exact;
+}
+
+/*
+
+    @page :first {
+  margin: 1cm 2cm;
+}
+
+*/
+
+.report-table-section-title {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+    background-color: #ccccff;
+    text-transform:uppercase !important;
+    border-bottom:1px solid !important;
+}
+
+
+
+
+

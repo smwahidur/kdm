@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a46f9b6a3c94786bbb0848905303569" Name="Diagram1" ZoomLevel="56">
+        <EntityTypeShape EntityType="KDMDBMODEL.AspNetRole" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_actions" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_address" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_address_types" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_company" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_config" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_contact_person" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_controllers" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_country" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_departments" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_designation" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_district" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_division" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_employee_status" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_employees" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_file" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_job_status" Width="1.5" PointX="14.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_menu_category" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_modules" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_notification" Width="1.5" PointX="8.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_pay_type" Width="1.5" PointX="10.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_phone" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_phone_types" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_police_station" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_RoleActionMappings" Width="1.5" PointX="16.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_RoleActions" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_training" Width="1.5" PointX="16.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_training_status" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_user_defaults" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_user_member_master" Width="1.5" PointX="7.375" PointY="20.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_user_member_transfer_history" Width="1.5" PointX="9.375" PointY="20.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_user_wallet" Width="1.5" PointX="11.375" PointY="20.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_user_wallet_history" Width="1.5" PointX="13.375" PointY="20.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_dealer_product_stock_history" Width="1.5" PointX="0.75" PointY="21.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_dealer_product_stock_master" Width="1.5" PointX="21.75" PointY="3.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_products_history" Width="1.5" PointX="21.75" PointY="14.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_products_quantity_update_history" Width="1.5" PointX="21.75" PointY="19.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_kdm_settings_history" Width="1.5" PointX="22.375" PointY="22.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_product_type" Width="1.5" PointX="18.375" PointY="23.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_company_funds_master" Width="1.5" PointX="21.375" PointY="11.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_company_funds_history" Width="1.5" PointX="24.375" PointY="11.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_member_bonus_master" Width="2.25" PointX="23.375" PointY="6.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_member_bonus_temp" Width="2.25" PointX="24.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_dealer_stockist_commission_master" Width="1.5" PointX="21.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_dealer_type" Width="1.5" PointX="24.375" PointY="15.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_dealers" Width="1.5" PointX="24.375" PointY="24.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_members" Width="1.5" PointX="9.375" PointY="24.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_thana" Width="1.5" PointX="20.375" PointY="25.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_union" Width="1.5" PointX="26.375" PointY="5.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_shipping_charge" Width="1.5" PointX="26.375" PointY="8.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_member_tree_history" Width="1.5" PointX="26.375" PointY="12.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_member_tree" Width="1.5" PointX="26.375" PointY="16.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.AspNetUser" Width="1.5" PointX="26.375" PointY="20.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_notice" Width="1.5" PointX="26.375" PointY="25.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_file_details" Width="1.5" PointX="27.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_cus_binary_balance" Width="1.5" PointX="13.375" PointY="27.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_generation_percentages" Width="1.5" PointX="15.375" PointY="27.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_process_to_tmp_account" Width="1.5" PointX="17.375" PointY="27.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_process_code" Width="1.5" PointX="28.375" PointY="3.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.AspNetUserRole" Width="1.5" PointX="3" PointY="30.875" />
+        <AssociationConnector Association="KDMDBMODEL.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_transaction" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_PvBv_history" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_binary_matching_data" Width="1.5" PointX="13.375" PointY="15.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_transaction_password" Width="1.5" PointX="9.375" PointY="12.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_transaction_purpose_code" Width="1.5" PointX="11.375" PointY="24.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_pv_point" Width="1.5" PointX="28.375" PointY="16.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_member_account_data" Width="1.5" PointX="28.375" PointY="19.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_tax_account_data" Width="1.5" PointX="28.375" PointY="12.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_member_leadeship_position" Width="1.5" PointX="19.375" PointY="28.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_vat_account_data" Width="1.5" PointX="28.375" PointY="24.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_kdm_settings_master" Width="1.5" PointX="28.375" PointY="28.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_products_master" Width="1.5" PointX="15.375" PointY="21.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_add_to_cart" Width="1.5" PointX="28.375" PointY="6.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_orders" Width="1.5" PointX="5.375" PointY="26.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_order_Line_item" Width="1.5" PointX="3.375" PointY="19.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_product_category" Width="1.5" PointX="5.375" PointY="23.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_purchase" Width="1.5" PointX="21.375" PointY="28.75" />
+        <EntityTypeShape EntityType="KDMDBMODEL.tbl_member_bonus_history" Width="1.5" PointX="19.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

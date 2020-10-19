@@ -1,0 +1,258 @@
+2020-10-03 00:51:56.490 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 00:51:56.757 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 00:51:56.858 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 00:51:56.859 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 00:51:56.859 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 00:51:57.392 +06:00 [INF] Server desktop-ct675dn:20168:6a2f1f72 successfully announced in 460.8391 ms
+2020-10-03 00:51:57.427 +06:00 [INF] Server desktop-ct675dn:20168:6a2f1f72 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 00:51:57.633 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 00:51:57.645 +06:00 [INF] Server desktop-ct675dn:20168:6a2f1f72 all the dispatchers started
+2020-10-03 02:02:44.478 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 02:02:44.880 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 02:02:44.977 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 02:02:44.978 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 02:02:44.978 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 02:02:45.588 +06:00 [INF] Server desktop-ct675dn:21180:ddd3ef26 successfully announced in 541.0684 ms
+2020-10-03 02:02:45.603 +06:00 [INF] Server desktop-ct675dn:21180:ddd3ef26 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 02:02:45.933 +06:00 [INF] Server desktop-ct675dn:21180:ddd3ef26 all the dispatchers started
+2020-10-03 02:07:45.744 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 02:15:58.521 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 02:15:58.579 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 02:15:58.604 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 02:15:58.605 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 02:15:58.605 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 02:15:58.766 +06:00 [INF] Server desktop-ct675dn:21544:8a55039c successfully announced in 140.8312 ms
+2020-10-03 02:15:58.771 +06:00 [INF] Server desktop-ct675dn:21544:8a55039c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 02:15:58.890 +06:00 [INF] Server desktop-ct675dn:21544:8a55039c all the dispatchers started
+2020-10-03 02:20:59.059 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 03:02:20.709 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 03:02:20.781 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 03:02:20.816 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 03:02:20.816 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 03:02:20.816 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 03:02:21.017 +06:00 [INF] Server desktop-ct675dn:13104:2fbad9e0 successfully announced in 178.0199 ms
+2020-10-03 03:02:21.044 +06:00 [INF] Server desktop-ct675dn:13104:2fbad9e0 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 03:02:21.150 +06:00 [INF] Server desktop-ct675dn:13104:2fbad9e0 all the dispatchers started
+2020-10-03 03:02:21.185 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 03:22:04.839 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 03:22:04.899 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 03:22:04.926 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 03:22:04.926 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 03:22:04.926 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 03:22:05.850 +06:00 [INF] Server desktop-ct675dn:12496:0bad86e4 successfully announced in 897.8202 ms
+2020-10-03 03:22:05.874 +06:00 [INF] Server desktop-ct675dn:12496:0bad86e4 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 03:22:05.983 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 03:22:06.018 +06:00 [INF] Server desktop-ct675dn:12496:0bad86e4 all the dispatchers started
+2020-10-03 03:26:54.974 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 03:26:55.253 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 03:26:55.430 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 03:26:55.430 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 03:26:55.430 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 03:26:55.847 +06:00 [INF] Server desktop-ct675dn:23980:7a765228 successfully announced in 377.8901 ms
+2020-10-03 03:26:55.861 +06:00 [INF] Server desktop-ct675dn:23980:7a765228 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 03:26:56.241 +06:00 [INF] Server desktop-ct675dn:23980:7a765228 all the dispatchers started
+2020-10-03 03:31:55.904 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 03:53:28.564 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 03:53:28.749 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 03:53:28.818 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 03:53:28.819 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 03:53:28.819 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 03:53:29.465 +06:00 [INF] Server desktop-ct675dn:11680:390e6929 successfully announced in 540.4936 ms
+2020-10-03 03:53:29.485 +06:00 [INF] Server desktop-ct675dn:11680:390e6929 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 03:53:29.920 +06:00 [INF] Server desktop-ct675dn:11680:390e6929 all the dispatchers started
+2020-10-03 03:59:38.513 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 04:09:40.834 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 04:09:42.168 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 04:09:42.208 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 04:09:42.208 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 04:09:42.208 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 04:09:42.371 +06:00 [INF] Server desktop-ct675dn:7584:fe272d16 successfully announced in 140.9494 ms
+2020-10-03 04:09:42.379 +06:00 [INF] Server desktop-ct675dn:7584:fe272d16 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 04:09:42.559 +06:00 [INF] Server desktop-ct675dn:7584:fe272d16 all the dispatchers started
+2020-10-03 09:06:54.230 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 09:06:54.615 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 09:06:54.642 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 09:06:54.643 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 09:06:54.643 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 09:06:54.834 +06:00 [INF] Server desktop-ct675dn:2000:26c27dac successfully announced in 169.6777 ms
+2020-10-03 09:06:54.841 +06:00 [INF] Server desktop-ct675dn:2000:26c27dac is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 09:06:54.955 +06:00 [INF] Server desktop-ct675dn:2000:26c27dac all the dispatchers started
+2020-10-03 09:06:55.000 +06:00 [INF] 2 servers were removed due to timeout
+2020-10-03 09:14:42.392 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 09:14:42.555 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 09:14:42.631 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 09:14:42.631 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 09:14:42.631 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 09:14:44.188 +06:00 [INF] Server desktop-ct675dn:20368:25c1037c successfully announced in 1497.022 ms
+2020-10-03 09:14:44.218 +06:00 [INF] Server desktop-ct675dn:20368:25c1037c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 09:14:44.247 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 09:14:44.600 +06:00 [INF] Server desktop-ct675dn:20368:25c1037c all the dispatchers started
+2020-10-03 09:53:59.731 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 09:53:59.795 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 09:53:59.822 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 09:53:59.822 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 09:53:59.822 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 09:54:00.159 +06:00 [INF] Server desktop-ct675dn:20540:7dcf2de7 successfully announced in 309.5245 ms
+2020-10-03 09:54:00.178 +06:00 [INF] Server desktop-ct675dn:20540:7dcf2de7 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 09:54:00.231 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 09:54:00.310 +06:00 [INF] Server desktop-ct675dn:20540:7dcf2de7 all the dispatchers started
+2020-10-03 10:17:41.319 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 10:17:41.469 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 10:17:41.496 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 10:17:41.496 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 10:17:41.496 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 10:17:41.664 +06:00 [INF] Server desktop-ct675dn:21196:74773509 successfully announced in 146.7567 ms
+2020-10-03 10:17:41.669 +06:00 [INF] Server desktop-ct675dn:21196:74773509 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 10:17:41.676 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 10:17:41.833 +06:00 [INF] Server desktop-ct675dn:21196:74773509 all the dispatchers started
+2020-10-03 10:21:40.187 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 10:21:40.246 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 10:21:40.274 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 10:21:40.274 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 10:21:40.275 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 10:21:40.434 +06:00 [INF] Server desktop-ct675dn:16212:f45c9e53 successfully announced in 138.241 ms
+2020-10-03 10:21:40.440 +06:00 [INF] Server desktop-ct675dn:16212:f45c9e53 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 10:21:40.610 +06:00 [INF] Server desktop-ct675dn:16212:f45c9e53 all the dispatchers started
+2020-10-03 14:01:08.811 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 14:01:08.919 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 14:01:08.945 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 14:01:08.946 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 14:01:08.946 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 14:01:09.123 +06:00 [INF] Server desktop-ct675dn:19896:5936040b successfully announced in 155.5049 ms
+2020-10-03 14:01:09.128 +06:00 [INF] Server desktop-ct675dn:19896:5936040b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 14:01:09.135 +06:00 [INF] 2 servers were removed due to timeout
+2020-10-03 14:01:09.285 +06:00 [INF] Server desktop-ct675dn:19896:5936040b all the dispatchers started
+2020-10-03 14:05:34.205 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 14:05:34.277 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 14:05:34.318 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 14:05:34.319 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 14:05:34.319 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 14:05:34.511 +06:00 [INF] Server desktop-ct675dn:7852:46553f75 successfully announced in 168.2935 ms
+2020-10-03 14:05:34.518 +06:00 [INF] Server desktop-ct675dn:7852:46553f75 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 14:05:34.637 +06:00 [INF] Server desktop-ct675dn:7852:46553f75 all the dispatchers started
+2020-10-03 14:12:56.391 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 14:19:44.333 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 14:19:44.456 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 14:19:44.488 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 14:19:44.488 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 14:19:44.488 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 14:19:44.678 +06:00 [INF] Server desktop-ct675dn:12876:23a07b15 successfully announced in 169.3663 ms
+2020-10-03 14:19:44.685 +06:00 [INF] Server desktop-ct675dn:12876:23a07b15 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 14:19:44.691 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 14:19:44.806 +06:00 [INF] Server desktop-ct675dn:12876:23a07b15 all the dispatchers started
+2020-10-03 14:40:34.445 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 14:40:34.508 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 14:40:34.537 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 14:40:34.537 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 14:40:34.537 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 14:40:34.720 +06:00 [INF] Server desktop-ct675dn:13684:ab623549 successfully announced in 160.3669 ms
+2020-10-03 14:40:34.725 +06:00 [INF] Server desktop-ct675dn:13684:ab623549 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 14:40:34.754 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 14:40:34.874 +06:00 [INF] Server desktop-ct675dn:13684:ab623549 all the dispatchers started
+2020-10-03 15:34:18.150 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 15:34:18.216 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 15:34:18.245 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 15:34:18.245 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 15:34:18.245 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 15:34:18.455 +06:00 [INF] Server desktop-ct675dn:14856:ed016a04 successfully announced in 185.2099 ms
+2020-10-03 15:34:18.464 +06:00 [INF] Server desktop-ct675dn:14856:ed016a04 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 15:34:18.628 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 15:34:18.642 +06:00 [INF] Server desktop-ct675dn:14856:ed016a04 all the dispatchers started
+2020-10-03 17:11:01.676 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 17:11:02.101 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 17:11:02.130 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 17:11:02.130 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 17:11:02.130 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 17:11:02.317 +06:00 [INF] Server desktop-ct675dn:6356:61f14adb successfully announced in 166.5039 ms
+2020-10-03 17:11:02.322 +06:00 [INF] Server desktop-ct675dn:6356:61f14adb is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 17:11:02.332 +06:00 [INF] 1 servers were removed due to timeout
+2020-10-03 17:11:02.495 +06:00 [INF] Server desktop-ct675dn:6356:61f14adb all the dispatchers started
+2020-10-03 23:16:36.063 +06:00 [INF] Start installing Hangfire SQL objects...
+2020-10-03 23:16:36.991 +06:00 [INF] Hangfire SQL objects installed.
+2020-10-03 23:16:37.024 +06:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@db_hangfire'
+2020-10-03 23:16:37.024 +06:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2020-10-03 23:16:37.024 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2020-10-03 23:16:37.322 +06:00 [INF] Server desktop-ct675dn:15680:d83c9b4b successfully announced in 275.3594 ms
+2020-10-03 23:16:37.330 +06:00 [INF] Server desktop-ct675dn:15680:d83c9b4b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2020-10-03 23:16:37.425 +06:00 [INF] Server desktop-ct675dn:15680:d83c9b4b all the dispatchers started
+2020-10-03 23:16:37.655 +06:00 [INF] 1 servers were removed due to timeout

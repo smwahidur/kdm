@@ -1,0 +1,120 @@
+﻿
+@model List<KDM.Models.SalesHistoryByInvoice>
+
+@{
+    ViewBag.Title = "PV BV HISTORY";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.PageTitle = "PV BV HISTORY";
+}
+
+
+<div class="row">
+    <div class="col">
+        @if (ViewBag.SMsg != null)
+        {
+            <div class="alert alert-success">@ViewBag.SMsg</div>
+        }
+        else if (ViewBag.EMsg != null)
+        {
+            <div class="alert alert-danger">@ViewBag.EMsg</div>
+        }
+        else if (ViewBag.WMsg != null)
+        {
+            <div class="alert alert-warning">@ViewBag.WMsg</div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        @using (Html.BeginForm("PVBVHistory", "Order", FormMethod.Post, new { @class = "", }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="main-card card border border-success rounded-0">
+                <div class="card-body">
+
+                    <div class="row col col-md-12">
+                        <div class="form-group row justify-content-center col col-sm-3">
+                            @Html.Label("FromDate", "From Date", new { @class = "col col-form-label" })
+                            @Html.TextBox("FromDate", DateTime.Now.Date, new { @class = "col form-control border border-success rounded-0", @datepicker = "" })
+                            @Html.ValidationMessage("FromDate", "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group row justify-content-end col col-sm-3">
+                            @Html.Label("ToDate", "From Date", new { @class = "col col-form-label" })
+                            @Html.TextBox("ToDate", DateTime.Now.Date, new { @class = "col form-control border border-success rounded-0", @datepicker = "" })
+                            @Html.ValidationMessage("ToDate", "", new { @class = "text-danger" })
+                        </div>
+
+                        <input type="submit" value="Show Report" class="btn btn-primary btn-sm" />
+
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+
+    @if (Model != null)
+    {
+        if (Model.Count > 0)
+        {
+            <div class="col-12">
+
+                <div class="card  border border-success rounded-0">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>SL#</th>
+                                    <th>Invoice#</th>
+                                    <th>Date</th>
+                                    <th>Member ID</th>
+                                    <th>Biling Amount</th>
+                                    <th>Total PV/Invoiced</th>
+                                    <th>Total BV/Invoiced</th>
+                                    <th>Total PV/Not Processed</th>
+                                    <th>Total BV/Not Processed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @{ var count = 1;}
+
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.InvoiceNo</td>
+                                        <td>@item.InvoiceDate</td>
+                                        <td>@item.MemberID</td>
+                                        <td>@item.InvoicedBillAmount</td>
+                                        <td>@item.InvoicedPV</td>
+                                        <td>@item.InvoicedBV</td>
+                                        <td>@item.NotProcessedPV</td>
+                                        <td>@item.NotProcessedBV</td>
+                                    </tr>
+
+                                    count++;
+                                }
+
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        }
+    }
+
+
+</div>
+

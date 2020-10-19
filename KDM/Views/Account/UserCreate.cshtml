@@ -1,0 +1,82 @@
+﻿@model KDM.Models.CreateNewUserViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "UserCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="col-md-4">
+
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger fade show" role="alert">
+            <strong>@ViewBag.ErrorMessage</strong>
+        </div>
+    }
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success fade show" role="alert">
+            <strong>@ViewBag.SuccessMessage</strong>
+        </div>
+    }
+
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">
+
+                @if (ViewBag.PanelTitles != null)
+                {@ViewBag.PanelTitles["AddNewUser"] }
+
+            else
+            { <span>START FROM HERE <b>&#11015;</b></span>}
+        </h5>
+
+        @using (Html.BeginForm("UserCreate", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="position-relative form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "" })
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = Html.DisplayNameFor(d => d.UserName) })
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="position-relative form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = Html.DisplayNameFor(d => d.Email) })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="position-relative form-group">
+                @Html.LabelFor(m => m.PhoneNumber, new { @class = "" })
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = Html.DisplayNameFor(d => d.PhoneNumber) })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="position-relative form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = Html.DisplayNameFor(d => d.Password) })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="position-relative form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "" })
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = Html.DisplayNameFor(d => d.ConfirmPassword) })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="position-relative form-group">
+                <input type="submit" value="Save" class="btn btn-success btn-lg btn-block" />
+            </div>
+
+        }
+
+        </div>
+    </div>
+
+</div>
+

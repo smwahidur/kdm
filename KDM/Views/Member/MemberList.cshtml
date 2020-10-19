@@ -1,0 +1,74 @@
+﻿@model IEnumerable<KDM.tbl_members>
+
+@{
+    ViewBag.Title = "MemberList";
+}
+
+    <div class="col-md-10">
+      
+        <div class="main-card card">
+            <div class="card-body">
+           
+                    <table class="table">
+                        <tr>
+                            <th>
+                               SL No
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MemberID)
+                            </th>
+                            <th>
+                                User ID
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SponsorID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SponsorName)
+
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.DistributorName)
+                            </th>
+
+                            <th>Joint Date</th>
+                        </tr>
+
+                        @{ int count = 0;}
+                        @foreach (var item in Model)
+                        {
+                    <tr>
+                        <td align="center">
+                          @count
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MemberID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlacementID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SponsorID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SponsorName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DistributorName)
+                        </td>
+
+                        <td>
+                          NA 
+                        </td>
+                    </tr>
+                            count++;
+                        }
+
+                    </table>
+
+                    </div>
+            </div>
+        </div>
+

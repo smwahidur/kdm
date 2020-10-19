@@ -1,0 +1,96 @@
+﻿@model IEnumerable<KDM.tbl_member_tree>
+
+@{
+    ViewBag.Title = "ShowBinaryCommission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="main-card card border border-success rounded-0">
+    <div class="card-body">
+        <h4>Show Binary Commission</h4>
+        <div class="main-card card border border-success rounded-0">
+            <div class="card-body">
+                <table class="display" id="binaryCommission" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Placement ID
+                            </th>
+                            <th>
+                                Left ID
+                            </th>
+                            <th>
+                                Right ID
+                            </th>
+                            <th>
+                                Sponsor ID
+                            </th>
+                            <th>
+                                Left Point
+                            </th>
+                            <th>
+                                Right Point
+                            </th>
+                            <th>
+                                PV
+                            </th>
+                            <th>
+                                BV
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PlacementID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LeftID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RightID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SponsorID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LeftPoint)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RightPoint)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PV)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BV)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            </div>
+        </div>
+
+
+        @section script{
+
+            <script>
+
+                $(document).ready(function () {
+                    $('#binaryCommission').DataTable({
+                        "scrollY": "450px",
+                        "scrollCollapse": true,
+                        "paging": false
+                    });
+                });
+
+            </script>
+        }

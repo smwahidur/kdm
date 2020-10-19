@@ -1,0 +1,126 @@
+﻿@model KDM.Models.MenuCategory
+@using KDM.Models
+@{
+
+    ViewBag.Title = "CREATE MENU CATEGORY";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<MenuCategory> dataList = (List<MenuCategory>)ViewBag.CategoryList;
+    var entryTitle = "CREATE MENU CATEGORY";
+    var listTitle = "LIST OF CATEGORIES";
+
+}
+
+<div class="row">
+
+    <div class="col col-sm-12">
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger fade show" role="alert">
+                <strong>@ViewBag.ErrorMessage</strong>
+            </div>
+
+            <div class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="DefaultMessageModalLabel" aria-hidden="true">
+                <div class="modal-body">
+                    <p><i class="icon-spinner icon-spin icon-4x"></i></p>
+                </div>
+            </div>
+        }
+
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div class="alert alert-success fade show" role="alert">
+                <strong>@ViewBag.SuccessMessage</strong>
+            </div>
+
+        }
+
+        @using (Html.BeginForm("CreateCategory", "Menu", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", }))
+        {
+            @Html.AntiForgeryToken()
+            
+            <div class="main-card card border border-success rounded-0">
+                <div class="card-body">
+                    <div class="card-title">
+                        @entryTitle
+                    </div>
+                    <div class="row">
+                        <div class="form-group row justify-content-center col col-sm-6">
+                            @Html.LabelFor(m=>m.CategoryName, new { @class = "col-sm-4 col-form-label" })
+                            @Html.TextBoxFor(m => m.CategoryName, new { @class = "col-sm-7 form-control border border-success rounded-0" })
+                            @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 dialog-bottom-controls">
+                        <input type="submit" value="Save" class="rounded-0 btn btn-success btn-lg active" />
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col col-sm-12">
+
+        <div class="main-card card border border-success rounded-0">
+            <div class="card-body">
+
+                <div class="card-title">
+                    @listTitle
+                </div>
+
+
+                @if (dataList.Count > 0)
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>SL#</th>
+                                <th>Category Id</th>
+                                <th>Category Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ 
+                                var count = 1;
+                            }
+
+                            @foreach (var item in dataList)
+                            {
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@item.Id</td>
+                                    <td>@item.CategoryName</td>
+                                    <td>
+
+                                        @using (Html.BeginForm("DeleteMenuCategory", "Menu", new { id = item.Id, ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <input type="submit" class="btn btn-sm btn-danger" confirm value="Delete" />
+                                        }
+
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                }
+                else
+                {
+                    <span>No Data Found</span>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

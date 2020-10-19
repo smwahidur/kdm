@@ -1,0 +1,205 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+}
+
+
+<style>
+    .full-height {
+       /* height: auto;
+        width:inherit;*/
+        border: 1px solid;
+        border-color: gray;
+    }
+
+    .fill {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden
+    }
+
+        .fill a img {
+            flex-shrink: 0;
+            min-width: 100%;
+            min-height: 100%
+        }
+        .fill img {
+            flex-shrink: 0;
+            min-width: 95%;
+            min-height: 100%;
+        }
+
+</style>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container" style=" border: 1px solid; border-color: gray;">
+    <div class="row" style="background-color:#002060;color:white;padding-bottom:1%;">
+        <div class="col-md-6 fill">
+            <div class="col-md-2 fill" style="margin-top:1%;padding-right:0%;">
+                <a href="url" style="color:white;text-decoration:none;"><img style="width:35px;" src="~/Content/HomePagePhoto/Logo.png" /></a>
+            </div>
+            <div class="col-md-10" style="margin-top:2%;padding-left:0%;">
+                <a href="url" style="color:white;text-decoration:none;font-size:28px;">Kinetic Distributor</a>
+            </div>
+        </div>
+        <div class="col-md-6 fill">
+            <div class="col-md-10" style="margin-top:3%;text-align:right;">
+                <a href=@Url.Action("Login","Account") style="color:white;text-decoration:none;font-size:20px;">Sign In</a>
+            </div>
+            <div class="col-md-2" style="margin-top:3%;text-align:left;">
+                <a href="url" style="color:white;text-decoration:none;font-size:20px;">Register</a>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background-color:#DBEEF4;color:#002060;">
+        <div class="col-md-12">
+            <ul class="nav navbar-nav" style="font-size:14px;margin-left:20%;">
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Start a Business</a></li>
+                <li><a href="#">Promotion</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Gallery</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row fill" style="text-align:center;margin-top:1%;">
+        <img src="~/Content/HomePagePhoto/MainPicture.png" />
+    </div>
+    <div class="row" style="background-color:#DBEEF4;color:#002060;margin-top:1%;">
+        <div style="font-weight:bold;text-align:center;">Welcome to Kinetic Family</div>
+    </div>
+    <div class="row" style="color:#002060;margin-top:2%;">
+        <div class="col-md-4" style="text-align:center;">
+            <button style="width:175px;height:70px;border-radius:8px;font-size:20px;color:white;font-weight:bold;background-color:darkred;">Why Kinetic</button>
+        </div>
+        <div class="col-md-4" style="text-align:center;">
+            <button style="width:175px;height:70px;border-radius:8px;font-size:20px;color:white;font-weight:bold;background-color:#376092;">Achievement</button>
+        </div>
+        <div class="col-md-4" style="text-align:center;">
+            <button style="width:175px;height:70px;border-radius:8px;font-size:20px;color:white;font-weight:bold;background-color:purple;">Testimony</button>
+        </div>
+    </div>
+    <div class="row" style="color:#002060;margin-top:2%;">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" style="text-align:center;">
+            <button style="width:175px;height:70px;border-radius:8px;font-size:20px;color:white;font-weight:bold;background-color:lightgreen;">Training Schedule</button>
+        </div>
+        <div class="col-md-4" style="text-align:center;">
+            <button style="width:175px;height:70px;border-radius:8px;font-size:20px;color:white;font-weight:bold;background-color:#E46C0A">Notice Board</button>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row" style="color:#002060;margin-top:4%;padding:0%;">
+        <div class="col-md-4 fill" style="text-align:right;">
+            <a href="#">
+                <img src="~/Content/HomePagePhoto/MPicture.png" />
+            </a>
+        </div>
+        <div class="col-md-4 fill" style="text-align:right;">
+            <a href="#">
+                <img src="~/Content/HomePagePhoto/MPicture.png" />
+            </a>
+        </div>
+        <div class="col-md-4 fill" style="text-align:right;">
+            <a href="#">
+                <img src="~/Content/HomePagePhoto/MPicture.png" />
+            </a>
+        </div>
+    </div>
+    <div class="row" style="background-color:#DBEEF4;color:#002060;margin-top:1%;">
+        <div style="font-weight:bold;text-align:center;">Customer Favorite Products</div>
+    </div>
+    <div class="row" style="color:#002060;margin-top:1%;">
+        <div class="col-md-2 fill" style="text-align:right;">
+            <a href="#">
+                <img style="width:150px;" src="~/Content/HomePagePhoto/CFP1.png" />
+            </a>
+        </div>
+        <div class="col-md-2 fill" style="text-align:right;">
+            <a href="#">
+                <img style="width:150px;" src="~/Content/HomePagePhoto/cfp2.png" />
+            </a>
+        </div>
+        <div class="col-md-2 fill" style="text-align:right;">
+            <a href="#">
+                <img style="width:150px;" src="~/Content/HomePagePhoto/cfp3.png" />
+            </a>
+        </div>
+        <div class="col-md-2 fill" style="text-align:right;">
+            <a href="#">
+                <img style="width:150px;" src="~/Content/HomePagePhoto/cfp4.jpg" />
+            </a>
+        </div>
+        <div class="col-md-2 fill" style="text-align:right;">
+            <a href="#">
+                <img style="width:150px;" src="~/Content/HomePagePhoto/cfp5.png" />
+            </a>
+        </div>
+        <div class="col-md-2 fill" style="text-align:right;">
+            <a href="#">
+                <img style="width:150px;" src="~/Content/HomePagePhoto/cfp6..png" />
+            </a>
+        </div>
+    </div>
+    <div class="row" style="color:#002060;margin-top:2%;padding:0%;">
+        <div class="col-md-3" style="text-align:center;">
+            <h4 style="font-weight:bold;">OUR BRANDS</h4>
+            <a href="#" style="color:black;text-decoration:none;font-size:15px;">Nutrilite</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Artistry</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Attitude</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Satinique</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Glister</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Atmosphere</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Queen</a>
+        </div>
+        <div class="col-md-4" style="text-align:center;">
+            <h4 style="font-weight:bold;">CORPORATE INFO</h4>
+            <a href="#" style="color:black;text-decoration:none;font-size:15px;">Start a Business</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Our Stockiest List</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">GST Registration Details</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">FAQs</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Contact Us</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">About Kinetic</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Careers</a>
+        </div>
+        <div class="col-md-5" style="text-align:center;margin-bottom:4%;">
+            <h4 style="font-weight:bold;">POLICIES & COMMUNICATION</h4>
+            <a href="#" style="color:black;text-decoration:none;font-size:15px;">Terms of use</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Website Privacy Policy</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Customer’s Policy</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Direct Seller's & PC's Privacy Policy</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Rules Of Conduct</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Product Return Policy</a>
+            <br /><a href="#" style="color:black;text-decoration:none;font-size:15px;">Shipping and Pickup Procedures</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Tree";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style rel='stylesheet'>
+
+    body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+        margin: 0;
+        padding: 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    fieldset, img {
+        border: 0;
+    }
+
+    address, caption, cite, code, dfn, em, strong, th, var {
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    caption, th {
+        text-align: left;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 100%;
+        font-weight: normal;
+    }
+
+    q:before, q:after {
+        content: '';
+    }
+
+    abbr, acronym {
+        border: 0;
+    }
+
+    body {
+        background: #fff;
+    }
+    /* optional Container STYLES */
+    /*.chart { height: 600px; margin: 5px; width: 900px; }*/
+    .chart {
+        padding-left: 40px;
+    }
+
+    .Treant > .node {
+        width: 100px;
+        text-align: center;
+        background-color: #ccccff;
+    }
+
+    .Treant > p {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .node-name {
+        font-weight: bold;
+    }
+
+    .node {
+        padding: 2px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background-color: #ffffff;
+        border: 1px solid #000;
+        width: 200px;
+        font-family: Tahoma;
+        font-size: 12px;
+    }
+
+        .node img {
+            margin-right: 10px;
+        }
+</style>
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">
+            Tree Mapping
+        </div>
+        @*<div class="row" style="">
+            @using (Html.BeginForm("TreeView", "Member", FormMethod.Get))
+            {
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="uID" class="form-control" placeholder="Member ID" />
+                        <input type="submit" value="Show Tree" class="btn btn-success" />
+                    </div>
+                </div>
+            }
+        </div>*@
+        <div class="chart" id="tree-container"></div>
+    </div>
+</div>
+
+
+@section script{
+
+    <script>
+
+        console.log(@Html.Raw(ViewBag.JsonData));
+        var chart_config = {
+            chart: {
+                container: "#tree-container",
+
+                connectors: {
+                    type: 'step'
+                },
+                node: {
+                    HTMLclass: 'node'
+                }
+            },
+            nodeStructure: @Html.Raw(ViewBag.JsonData)
+        };
+
+        $(function () {
+
+            new Treant(chart_config);
+            location.hash = '#'+$('.node').first().attr('id');
+        })
+
+
+
+    </script>
+
+}
+
+
+
+

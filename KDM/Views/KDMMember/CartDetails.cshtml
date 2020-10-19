@@ -1,0 +1,215 @@
+﻿@using KDM.Models
+@model List<KDM.Models.OrderViewModel>
+@{
+    ViewBag.Title = "CartDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="col col-12 ">
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+    }
+</div>
+
+<div class="main-card card border border-success rounded-0">
+    <div class="card-body">
+        
+        <div id="row" class="order-details">
+
+            <div class="col-6">
+
+                @{
+                    double totalAmount = 0;
+                }
+
+                <table class="table table-bordered" style="margin-top:20px;">
+                    <tbody>
+
+                        <tr>
+                            <td colspan="8" style="font-weight:bold;font-size:20px; text-align:center; background-color:lightgray">ORDER DETAILS</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" style="font-weight:bold;">DATE</td>
+                            <td colspan="2">@DateTime.Now.ToString("dd-MM-yyyy")</td>
+                            <td colspan="2"></td>
+                            
+                            <td colspan="1">ORDER ID</td>
+                            <td colspan="2"><span class="text-danger" id="orderId">NO ORDER ID GENERATED</span></td>
+                        </tr>
+
+
+                        <tr style="font-weight:bold;font-size:14px; background-color:lightblue;">
+                            <td style="width:25%;text-align:left;">Product</td>
+                            <td style="width:10%;text-align:center;">Quantity</td>
+                            <td style="width:10%;text-align:center;">DP</td>
+                            <td style="width:15%;text-align:center;">PV</td>
+                            <td style="width:15%;text-align:center;">BV</td>
+                            <td style="width:15%;text-align:center;">VAT</td>
+                            <td style="width:15%;text-align:center;">VAT Total</td>
+                            <td style="width:10%;text-align:center;">Total</td>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+
+                    <tr>
+                        <td style="width:25%;text-align:left;">@item.ProductName</td>
+                        <td style="width:10%;text-align:center;">@item.Quantity</td>
+                        <td style="width:10%;text-align:center;">@item.DP</td>
+                        <td style="width:15%;text-align:center;">@item.BP</td>
+                        <td style="width:15%;text-align:center;">@item.RB</td>
+                        <td style="width:15%;text-align:center;">@item.vat</td>
+                        <td style="width:15%;text-align:center;">@{var vatTotal = item.vat * (int)item.Quantity;} @vatTotal</td>
+                        <td style="width:10%;text-align:center;">@item.TotalAmount</td>
+                    </tr>
+
+                            totalAmount += item.TotalAmount;
+                        }
+
+                        <tr>
+                            <td colspan="5" rowspan="4"></td>
+                            <td colspan="2" style="font-weight:bold;background-color:lightblue;text-align:right;">Sub-Total :</td>
+                            <td>@ViewBag.totalAmount</td>
+                        </tr>
+
+                        <tr>
+
+                            <td colspan="2" style="font-weight:bold;background-color:lightblue; text-align:right;">Flat Shipping Rate :</td>
+                            <td>@ViewBag.totalshiping</td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="2" style="font-weight:bold;background-color:lightblue; text-align:right;">VAT  :</td>
+                            <td>@ViewBag.totalVat</td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="2" style="font-weight:bold;background-color:lightblue; text-align:right;">Total(including Vat) :</td>
+                            <td>@ViewBag.totalAmount</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label>Payment Method:</label>
+                <select id="PaymentMode" name="PaymentMode">
+                    <option>---Select---</option>
+                    <option value="MP">bKash/Rocket</option>
+                    <option value="COD">Cash On Delivery</option>
+                    <option value="WP">Wallet Payment</option>
+                </select>
+                <br />
+                <br />
+                <textarea id="PaymentAddress" name="PaymentAddress" placeholder="Payment Address" class="form-control border border-success rounded-0"></textarea>
+                <textarea id="ShipmentAddress" name="ShipmentAddress" placeholder="Shipment Address" class="form-control border border-success rounded-0"></textarea>
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:20px;">
+            <input type="button" value="Confirm Order" id="save" class="btn btn-success btn-lg" />
+            <input type="button" value="Return to Cart" id="CancelOrder" class="btn btn-danger btn-lg" />
+        </div>
+
+        <div class="position-relative form-group">
+            <a href="javascript:printDiv('order-details')"><input type="button" value="Print" id="print" class="btn btn-success btn-lg" /></a>
+        </div>
+        <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+    </div>
+</div>
+
+
+@section script
+{
+    <script>
+
+        $("#CancelOrder").click(function () {
+
+            window.location.href='@Url.Action("ProductPurchase","KDMMember")';
+
+        });
+
+        $(document).ready(function () {
+            $("#print").hide();
+        });
+
+        @*$(document).on('click', '#save', function () {
+            $.ajax({
+                url: '@Url.Action("OrderSave", "Order")',
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify({ orderViewModel: orderViewModel }),
+                type: 'POST',
+                dataType: 'json',
+                success: function (datas) {
+                    if (datas == 0) {
+                        alert("Can't Placed the Order.");
+                    }
+                    else {
+                        var div = document.getElementById('orderId');
+                        div.innerHTML += datas.OrderID;
+                        alert("Order successfully Placed");
+                    }
+                },
+                error: function () {
+                    alert("Please check your internet connection first.")
+                }
+            });
+        });*@
+
+        function printDiv(divId) {
+            window.frames["print_frame"].document.body.innerHTML = $(".order-details").html();
+            window.frames["print_frame"].window.focus();
+            window.frames["print_frame"].window.print();
+        }
+
+
+        $(document).on('click', '#save', function () {
+            var id = { PaymentAddress: $("#PaymentAddress").val(), ShipmentAddress: $("#ShipmentAddress").val(), PaymentMode: $("#PaymentMode").val()}
+            $.ajax({
+                url: '@Url.Action("PostOrder", "KDMMember")',
+                contentType: "application/json;charset=utf-8",
+                data: id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (datas) {
+                    console.log(datas);
+                    if (datas == 0) {
+                        alert("Can't Placed the Order.");
+                    }
+
+                    if (datas.Success == false)
+                    {
+                        alert(datas.Message);
+                    }
+                    else (datas.Success == true)
+                    {
+                        var div = document.getElementById('orderId');
+                        div.innerHTML = datas.OrderId;
+                        alert(datas.Message);
+                        $("#save").hide();
+                        $("#CancelOrder").hide();
+                        $("#print").show();
+                    }
+                },
+                error: function () {
+                    alert("Please check your internet connection first.")
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
+

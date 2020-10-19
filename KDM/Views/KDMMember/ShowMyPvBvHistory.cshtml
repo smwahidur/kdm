@@ -1,0 +1,48 @@
+﻿@model IEnumerable<KDM.tbl_PvBv_history>
+
+@{
+    ViewBag.Title = "ShowMyPvBvHistory";
+    Layout = null;
+}
+    <div class="h4">
+        <table class="table ">
+            <tr>
+
+                <th>
+                    Statement No
+                </th>
+                <th>
+                    PV Point
+                </th>
+                <th>
+                    BV Point
+                </th>
+                <th>
+                    Posting Date
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr >
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProcessCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PVPoint)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BVPoint)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostingDate)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+

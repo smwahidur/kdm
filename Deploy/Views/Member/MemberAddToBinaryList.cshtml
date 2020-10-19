@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "MemberAddToBinaryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="col col-6">
+
+    @if (ViewBag.EMsg != null)
+    {
+        <div class="alert alert-danger fade show" role="alert">
+            <strong>@ViewBag.EMsg</strong>
+        </div>
+    }
+    @if (ViewBag.SMsg != null)
+    {
+        <div class="alert alert-success fade show" role="alert">
+            <strong>@ViewBag.SMsg</strong>
+        </div>
+    }
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+
+                BINARY PLACEMENT
+
+            </h5>
+
+            @using (Html.BeginForm("MemberAddToBinaryList", "Member", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="position-relative form-group">
+                    @Html.Label("ParentID", new { @class = "" })
+                    @Html.TextBox("ParentID", "", new { @class = "form-control", @placeholder = "Parent Member", @Required = "Required" })
+                </div>
+
+                <div class="position-relative form-group">
+                    @Html.Label("ChildID", new { @class = "" })
+                    @Html.TextBox("ChildID", "", new { @class = "form-control", @placeholder = "New Member", @Required = "Required" })
+
+                </div>
+                <div class="position-relative form-group">
+                    <input type="submit" value="Save" class="btn btn-success btn-lg btn-block" />
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+
+</div>

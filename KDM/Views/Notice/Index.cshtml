@@ -1,0 +1,61 @@
+﻿@model KDM.Models.FileUploadVModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-10">
+    @if (@ViewBag.Message != null)
+    {
+        <div class="alert alert-success fade show" role="alert">
+            <strong>@ViewBag.Message</strong>
+        </div>
+    }
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            @*<h5 class="card-title">
+
+                    @if (ViewBag.PanelTitles != null)
+                    {@ViewBag.PanelTitles["AddNewOrder"] }
+
+                else
+                { <span>START FROM HERE <b>&#11015;</b></span>}
+                </h5>*@
+
+            @using (Html.BeginForm("Index", "Notice", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="main-card card border border-success rounded-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-4 label2">
+                                    @Html.LabelFor(m => m.FileNote, "File Note", new { @class = "label" })
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.TextBoxFor(m => m.FileNote, new { @class = "form-control", @placeholder = "File Note" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.FileNote, "", new { @style = "color: red" })
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4 label2">
+                                    @Html.LabelFor(m => m.File, "Select File", new { @class = "label" })
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.TextBoxFor(m => m.File, new { @class = "form-control", @type = "file", accept = "application/msword, application/pdf, image/*" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.File, "", new { @style = "color: red" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="position-relative form-group">
+                    <input type="submit" value="Save" class="btn btn-success btn-lg btn-block" confirm="" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+

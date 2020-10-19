@@ -1,0 +1,177 @@
+﻿@model IEnumerable<KDM.tbl_products_master>
+
+@{
+    ViewBag.Title = "ProductPurchase";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    div.dataTables_wrapper {
+        width: 100%;
+        margin: 0 auto;
+    }
+</style>
+    
+
+<div class="col col-12">
+    @if (ViewBag.SMS != null)
+    {
+        <div class="alert alert-success">@ViewBag.SMS</div>
+    }
+
+    <div class="col col-12 ">
+        @if (ViewBag.EMsg != null)
+        {
+            <div class="alert alert-danger">@ViewBag.EMsg</div>
+        }
+        @if (ViewBag.SMsg != null)
+        {
+            <div class="alert alert-success">@ViewBag.SMsg</div>
+        }
+        @if (ViewBag.WMsg != null)
+        {
+            <div class="alert alert-warning">@ViewBag.WMsg</div>
+        }
+    </div>
+</div>
+<div class="row col-md-12" style="padding: 0%;">
+    <div class="col-md-8" style="padding: 0%;">
+        <div class="main-card card border border-success rounded-0">
+            <div class="card-body">
+                <h4 style="text-align:center;">Choose Your Product From List</h4>
+                @*<div class="main-card card border border-success rounded-0">*@
+                <hr />
+                    <div class="card-body">
+                        <table class="display" id="productPurchase" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">
+                                        Product Name
+                                    </th>
+                                    <th style="text-align:right;">
+                                        MRP
+                                    </th>
+                                    <th style="text-align:right;">
+                                        DP
+                                    </th>
+                                    <th style="text-align:right;">
+                                        Wallet Price
+                                    </th>
+                                    <th style="text-align:right;">
+                                        PV
+                                    </th>
+                                    <th style="text-align:right;">
+                                        BV
+                                    </th>
+                                    <th style="text-align:center;">
+                                        Order
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            @{ }
+                                            @Html.DisplayFor(modelItem => item.ProductName)
+                                        </td>
+                                        <td style="text-align:right;">
+                                            @Html.DisplayFor(modelItem => item.MRP)
+                                        </td>
+                                        <td style="text-align:right;">
+                                            @Html.DisplayFor(modelItem => item.DP)
+                                        </td>
+                                        <td style="text-align:right;">
+                                            @Html.DisplayFor(modelItem => item.WP)
+                                        </td>
+                                        <td style="text-align:right;">
+                                            @Html.DisplayFor(modelItem => item.BP)
+                                        </td>
+                                        <td style="text-align:right;">
+                                            @Html.DisplayFor(modelItem => item.RB)
+                                        </td>
+                                        <td style="text-align:center;">
+                                            @*<input type="button" id="addToCart" value="Add To Cart" class="col-sm-10 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;" />*@
+                                            <a href='@Url.Action("ProductAddToCart", "KDMMember", new { ProductID = item.ProductID })' class="col-sm-10 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;">Add To Cart</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="position-relative form-group">
+                            <a href='@Url.Action("CartDetails", "KDMMember")' class="col-sm-12 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;">Continue Order</a>
+                        </div>
+                        @*<div>
+                                @{
+                                    var memberId = Html.Action("GETMemberID", "KDMMember", new { UserName = HttpContext.Current.User.Identity.Name });
+                                }
+                                @Html.Action("addedtocart", "KDMMember", new { MemberID = memberId });
+                            </div>*@
+                    </div>
+
+                @*</div>*@
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4" style="padding: 0%;">
+        <div class="main-card card border border-success rounded-0">
+            <div class="card-body">
+                <h4 style="text-align:center;">Cart List</h4>
+                @*<div class="main-card card border border-success rounded-0">*@
+                <hr />
+                    <div class="card-body">
+                        <div>
+                            @{
+                                var memberId = Html.Action("GETMemberID", "KDMMember", new { UserName = HttpContext.Current.User.Identity.Name });
+                            }
+                            @Html.Action("addedtocart", "KDMMember", new { MemberID = memberId })
+                        </div>
+                    </div>
+                @*</div>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section script{
+
+    <script>
+        $(document).ready(function () {
+            $('#productPurchase').DataTable({
+                "scrollY": "450px",
+                "scrollCollapse": true,
+                "paging": false
+            });
+        });
+
+        @*$(document).on('click','#addToCart', function () {
+          //  alert();
+            var spId = $("#SponsorID").val();
+            if (spId != "") {
+                $.ajax({
+                    url: '@Url.Action("GetSponsorName", "Member")',
+                    contentType: "application/json;charset=utf-8",
+                    data: { spId: spId },
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (datas) {
+                        if (datas == 0) {
+                            //alert("This depot doesn't exist.");
+                        }
+                        else {
+                            $("#SponsorName").val(datas);
+                        }
+                    }
+                });
+            }
+            else {
+                alert("Sponsor not found.");
+            }
+        });*@
+
+    </script>
+}

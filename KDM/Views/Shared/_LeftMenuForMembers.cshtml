@@ -1,0 +1,32 @@
+﻿@using KDM.Helpers
+
+<div class="app-sidebar__inner " style="height:600px; overflow-y:scroll; font-size:10px;">
+    <ul class="vertical-nav-menu dynamic-menu">
+
+        @{
+        var categories = ViewHelper.LoadMenu();
+        var categoryId = 1;
+        }
+
+        @foreach (var category in categories)
+        {
+        if (category.ChildItems.Count > 0)
+        {
+        <li class="active">
+            <br />
+            @foreach (var item in category.ChildItems)
+            {
+            <a menu-child parent-id=@categoryId href=@Url.Action(item.Action, item.Controller)>
+
+                @item.ActionText
+            </a>
+
+            }
+
+        </li>
+        categoryId = categoryId + 1;
+        }
+        }
+
+    </ul>
+</div>

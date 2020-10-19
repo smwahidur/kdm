@@ -1,0 +1,213 @@
+﻿
+@model List<KDM.Models.SalesHistory>
+
+@{
+    ViewBag.Title = "SALES HISTORY";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.PageTitle = "SALES HISTORY";
+}
+
+
+<div class="row">
+    <div class="col">
+        @if (ViewBag.SMsg != null)
+        {
+            <div class="alert alert-success">@ViewBag.SMsg</div>
+        }
+        else if (ViewBag.EMsg != null)
+        {
+            <div class="alert alert-danger">@ViewBag.EMsg</div>
+        }
+        else if (ViewBag.WMsg != null)
+        {
+            <div class="alert alert-warning">@ViewBag.WMsg</div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        @using (Html.BeginForm("Saleshistory", "Order", FormMethod.Post, new { @class = "", }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="main-card card border border-success rounded-0">
+                <div class="card-body">
+
+                    <div class="row col col-md-12">
+                        <div class="form-group row justify-content-center col col-sm-3">
+                            @Html.Label("FromDate", "From Date", new { @class = "col col-form-label" })
+                            @Html.TextBox("FromDate", DateTime.Now.Date, new { @class = "col form-control border border-success rounded-0", @datepicker = "" })
+                            @Html.ValidationMessage("FromDate", "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group row justify-content-end col col-sm-3">
+                            @Html.Label("ToDate", "From Date", new { @class = "col col-form-label" })
+                            @Html.TextBox("ToDate", DateTime.Now.Date, new { @class = "col form-control border border-success rounded-0", @datepicker = "" })
+                            @Html.ValidationMessage("ToDate", "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group row justify-content-end col col-sm-4">
+                            @Html.Label("Status", "Status", new { @class = "col col-form-label" })
+                            @Html.DropDownList("Status",new List<SelectListItem>() {
+                                new SelectListItem()
+                                {
+                                   Value=KDM.Helpers.KDMOrderStatus.Approved,
+                                   Text=KDM.Helpers.KDMOrderStatus.Approved
+                                },
+                                new SelectListItem()
+                                {
+                                   Value=KDM.Helpers.KDMOrderStatus.Pending,
+                                   Text=KDM.Helpers.KDMOrderStatus.Pending
+                                },
+                                new SelectListItem()
+                                {
+                                   Value=KDM.Helpers.KDMOrderStatus.Cancled,
+                                   Text=KDM.Helpers.KDMOrderStatus.Cancled
+                                }
+                            },"--Select--", new { @class = "col form-control border border-success rounded-0"})
+                            @Html.ValidationMessage("ToDate", "", new { @class = "text-danger" })
+                        </div>
+
+                        <input type="submit" value="Show Report" class="btn btn-primary btn-sm" />
+
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+
+    @if (Model != null)
+    {
+        if (Model.Count > 0)
+        {
+            <div class="col-12">
+
+                <div class="card  border border-success rounded-0">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>SL#</th>
+                                    <th>Member ID</th>
+                                    <th>Order#</th>
+                                    <th>Product Code</th>
+                                    <th>Product Name</th>
+                                    <th>MRP</th>
+                                    <th>DP</th>
+                                    <th>QTY</th>
+                                    <th>PV/Unit</th>
+                                    <th>BV/Unit</th>
+                                    <th>Total Amount</th>
+                                    <th>Total Vat</th>
+                                    <th>Total PV</th>
+                                    <th>Total BV</th>
+                                    <th>Shipping Address</th>
+                                    <th>Payment Method</th>
+                                    <th>Order Status</th>
+                                    <th>Order Date</th>
+                                    <th>Order By</th>
+                                    <td>Approved By</td>
+                                    <td>Status Change Date</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @{
+                                    var count = 1;
+                                    var successColor = "#8af542";
+                                    var warningColor = "#e6f542";
+                                    var dangerColor = "#f56042";
+                                    var rowColor = "";
+                                }
+
+                                @foreach (var item in Model)
+                                {
+
+                                    if (item.OrderStatus == "Approved")
+                                    {
+                                        rowColor = successColor;
+                                    }
+                                    else if (item.OrderStatus == "Pending")
+                                    {
+                                        rowColor = warningColor;
+                                    }
+                                    else if (item.OrderStatus == "Cancled")
+                                    {
+                                        rowColor = dangerColor;
+                                    }
+
+
+
+                                    <tr style="background-color:@rowColor">
+                                        <td>@count</td>
+                                        <td>@item.MemberID</td>
+                                        <td>@item.OrderID</td>
+                                        <td>@item.ProductCode</td>
+                                        <td>@item.ProductName</td>
+                                        <td>@item.MRP</td>
+                                        <td>@item.DP</td>
+                                        <td>@item.Qty</td>
+                                        <td>@item.PV</td>
+                                        <td>@item.BV</td>
+                                        <td>@item.TotalAmount</td>
+                                        <td>@item.TotalVat</td>
+                                        <td>
+                                            @{
+                                                var totalPV = item.PV * item.Qty;
+                                            }
+                                            @totalPV
+                                        </td>
+                                        <td>
+                                            @{
+                                                var totalBV = item.BV * item.Qty;
+                                            }
+                                            @totalBV
+                                        </td>
+                                        <td>@item.ShipmentAddress</td>
+                                        <td>
+                                            @{
+                                                var paymentMethod = KDM.Helpers.KDMOptions.PaymentMethods.Where(x => x.Key == item.PaymentMethod).Select(x => x.Value).FirstOrDefault();
+                                            }
+
+                                            @paymentMethod
+                                        </td>
+                                        <td>@item.OrderStatus</td>
+                                        <td>
+                                            @if (item.OrderDate != null)
+                                            {
+                                                @String.Format("{0:dd-MM-yyyy}", item.OrderDate)
+                                            }
+                                        </td>
+                                        <td>@item.OrderBy</td>
+                                        <td>@item.ApprovedBy</td>
+                                        <td>
+                                            @if (item.StatusUpdateDate != null)
+                                            {
+                                                @String.Format("{0:dd-MM-yyyy}", item.StatusUpdateDate)
+                                            }
+                                        </td>
+                                    </tr>
+
+                                    count++;
+                                }
+
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        }
+    }
+
+
+</div>
+

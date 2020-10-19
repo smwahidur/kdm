@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "CREATE ROLE";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-sm-6">
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger fade show" role="alert">
+                <strong>@ViewBag.ErrorMessage</strong>
+            </div>
+        }
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div class="alert alert-success fade show" role="alert">
+                <strong>@ViewBag.SuccessMessage</strong>
+            </div>
+        }
+
+        <div class="card mb-2">
+            <div class="card-body">
+                <div class="card-title">
+                    @if (ViewBag.PanelTitles != null)
+                    {
+                        @ViewBag.PanelTitles["PanelTitle1"]
+                    }
+                    else
+                    {
+                        <span> START FROM HERE<b>&#11015;</b></span>
+                    }
+                </div>
+
+                @using (Html.BeginForm("RoleCreate", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="position-relative form-group">
+                        @Html.Label("Role Name")
+                        @Html.TextBox("RoleName", "", new { @class = "form-control", @placeholder = "Role Name" })
+                    </div>
+
+                    <input type="submit" value="Save" class="btn btn-lg btn-success pull-right" />
+                }
+
+            </div>
+        </div>
+
+        <div class="card mb-1">
+            @using (Html.BeginForm("RoleDelete", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+            {
+                @Html.AntiForgeryToken()
+
+                if (ViewBag.AllRoles != null)
+                {
+                    if (ViewBag.AllRoles.Count > 0)
+                    {
+                        Dictionary<string, string> allRoles = (Dictionary<string, string>)ViewBag.AllRoles;
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Role Name</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var rw in allRoles)
+                                {
+                                    <tr>
+                                        <td>
+                                          @Html.Hidden("RoleId",rw.Key)
+                                          @rw.Value
+                                        </td>
+                                        <td>
+                                            <input type="submit" value="Delete" confirm="" class="btn btn-sm btn-danger pull-right" />
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+
+                    }
+                }
+            }
+        </div>
+
+    </div>
+
+</div>
+
+

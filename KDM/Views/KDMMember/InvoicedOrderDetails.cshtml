@@ -1,0 +1,146 @@
+﻿@model KDM.Models.OrderInvoiceDetailsViewModel
+@{
+    ViewBag.Title = "Invoiced Order Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="col col-12 ">
+
+    @if (ViewBag.SMsg != null)
+    {
+        <div class="alert alert-success">@ViewBag.SMsg</div>
+    }
+    else if (ViewBag.EMsg != null)
+    {
+        <div class="alert alert-danger">@ViewBag.EMsg</div>
+    }
+    else if (ViewBag.WMsg != null)
+    {
+        <div class="alert alert-warning">@ViewBag.WMsg</div>
+    }
+
+</div>
+
+<div class="main-card card border border-success rounded-0">
+    <div class="card-body">
+        
+        <div id="row" class="order-details">
+
+            <div class="col-6">
+                <table class="table table-bordered" style="margin-top:20px;">
+                    <tbody>
+
+                        <tr>
+                            <td colspan="8" style="font-weight:bold;font-size:20px; text-align:center; background-color:lightgray">ORDER DETAILS</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" style="font-weight:bold;">DATE</td>
+                            <td colspan="2">@String.Format("{0:dd-MM-yyyy}",Model.OrderDate)</td>
+                            <td colspan="2"></td>
+                            
+                            <td colspan="1">ORDER ID</td>
+                            <td colspan="2"><span class="text-danger" id="orderId">@Model.OrderID</span></td>
+                        </tr>
+
+                        <tr style="font-weight:bold;font-size:14px; background-color:lightblue;">
+                            <td style="width:25%;text-align:left;">Product</td>
+                            <td style="width:10%;text-align:center;">Quantity</td>
+                            <td style="width:10%;text-align:center;">DP</td>
+                            <td style="width:15%;text-align:center;">PV</td>
+                            <td style="width:15%;text-align:center;">BV</td>
+                            <td style="width:15%;text-align:center;">VAT</td>
+                            <td style="width:15%;text-align:center;">VAT Total</td>
+                            <td style="width:10%;text-align:center;">Total</td>
+                        </tr>
+
+                        @foreach (var item in Model.InvoicedProducts)
+                        {
+
+                            <tr>
+                                <td style="width:25%;text-align:left;">@item.ProductName</td>
+                                <td style="width:10%;text-align:center;">@item.Quantity</td>
+                                <td style="width:10%;text-align:center;">@item.DP</td>
+                                <td style="width:15%;text-align:center;">@item.PV</td>
+                                <td style="width:15%;text-align:center;">@item.BV</td>
+                                <td style="width:15%;text-align:center;">@item.Vat</td>
+                                <td style="width:15%;text-align:center;">@item.TotalVat</td>
+                                <td style="width:10%;text-align:center;">@item.TotalDP</td>
+                            </tr>
+
+                        }
+
+                        <tr>
+                            <td colspan="5" rowspan="4"></td>
+                            <td colspan="2" style="font-weight:bold;background-color:lightblue;text-align:right;">Sub-Total :</td>
+                            <td>@Model.TotalPrice</td>
+                        </tr>
+
+                        <tr>
+
+                            <td colspan="2" style="font-weight:bold;background-color:lightblue; text-align:right;">Flat Shipping Rate :</td>
+                            <td>@Model.TotalShippingCharge</td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="2" style="font-weight:bold;background-color:lightblue; text-align:right;">VAT  :</td>
+                            <td>@Model.TotalVat</td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="2" style="font-weight:bold;background-color:lightblue; text-align:right;">Total(including Vat) :</td>
+                            <td>@Model.TotalPrice</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label>Payment Method:</label>
+                <span>@Model.PaymentMethod</span>
+                <br />
+                <br />
+                <textarea id="PaymentAddress" name="PaymentAddress" placeholder="Payment Address" class="form-control border border-success rounded-0" readonly>@Model.PaymentAddress</textarea>
+                <textarea id="ShipmentAddress" name="ShipmentAddress" placeholder="Shipment Address" class="form-control border border-success rounded-0" readonly>@Model.ShippingAddress</textarea>
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:20px;">
+
+            @Html.ActionLink("Return to Pending Orders", "PendingOrder", null, new { @class = "btn btn-primary btn-lg" })
+            <a href="javascript:printDiv('order-details')"><input type="button" value="Print" id="print" class="btn btn-success btn-lg" /></a>
+        </div>
+
+        <div class="position-relative form-group">
+            
+        </div>
+        <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+    </div>
+</div>
+
+
+@section script
+{
+    <script>
+
+        function printDiv(divId) {
+            window.frames["print_frame"].document.body.innerHTML = $(".order-details").html();
+            window.frames["print_frame"].window.focus();
+            window.frames["print_frame"].window.print();
+        }
+
+    </script>
+}
+
+
+
+
+

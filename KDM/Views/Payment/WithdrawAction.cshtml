@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "WithdrawAction";
+    Layout = "~/Views/Shared/_LayoutFramePage.cshtml";
+}
+@using (Html.BeginForm("DailyAttnSumReport_result", "Attendence", new { Area = "HRPayroll", ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get, new { @name = "Attendence-DailyAttnSumReport_result", @class = "", }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="main-card card border border-success rounded-0">
+        <div class="card-body">
+            <div class="card-title">
+
+            </div>
+            <div class="row">
+                <div class="form-group row justify-content-center col col-sm-4">
+                    Debit Account
+                </div>
+                <div class="form-group row justify-content-center col col-sm-4">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group row justify-content-center col col-sm-4">
+                   Credit Account
+                </div>
+                <div class="form-group row justify-content-center col col-sm-4">
+
+                </div>
+            </div>
+            <div class="row col col-sm-6 justify-content-end rounded-1 border-2">
+
+                <div class="form-group row justify-content-end col col-sm-5">
+                    <input type="button" id="btnShowReportPDF" value="Save Transaction" class="rounded-0 btn btn-success btn-lg active col col-sm-12" report-type="pdf" />
+                </div>
+                <div class="justify-content-center col col-sm-2"> </div>
+
+                <div class="form-group row justify-content-left col col-sm-5">
+                    <input type="button" id="btnShowReport" value="Single Page Summary" class="rounded-0 btn btn-success btn-lg active col col-sm-12" report-type="htmlpdf" />
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,96 @@
+﻿@model KDM.Models.ProductVModel
+@{
+    ViewBag.Title = "AddProductQuantity";
+}
+
+<div class="col-md-6">
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger fade show" role="alert">
+            <strong>@ViewBag.ErrorMessage</strong>
+        </div>}
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success fade show" role="alert">
+            <strong>@ViewBag.SuccessMessage</strong>
+        </div>}
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">
+
+                @if (ViewBag.PanelTitles != null)
+                {@ViewBag.PanelTitles["AddProductQuantity"] }
+
+            else
+            { <span>START FROM HERE <b>&#11015;</b></span>}
+            </h5>
+
+            @using (Html.BeginForm("AddProductQuantity", "Product", FormMethod.Post, new { @class = "" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="main-card card border border-success rounded-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.Code, "Product Code", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.Code, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Product Code" })
+                                @Html.ValidationMessageFor(m => m.Code, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.InStock, "In Stock", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.InStock, new { @class = "col-sm-8 form-control border border-success rounded-0", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.InStock, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row justify-content-center col col-sm-12">
+                                @Html.LabelFor(m => m.Quantity, "Quantity", new { @class = "col-sm-3 col-form-label" })
+                                @Html.TextBoxFor(m => m.Quantity, new { @class = "col-sm-8 form-control border border-success rounded-0", @placeholder = "Quantity", type = "number", style = "height: 3em !important;font-size: 10px !important;margin: 2px !important;" })
+                                @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="position-relative form-group" style="width:50%;">
+                            <input type="submit" value="Save" class="col-sm-3 btn btn-success btn-lg btn-block" style="margin-left:42%;" confirm="" />
+                        </div>
+                    </div>
+                </div>
+                }
+        </div>
+    </div>
+</div>
+
+@section script
+{
+    <script>
+        $(document).focusout("#Code", function () {
+            var code = $("#Code").val();
+            if (code != "") {
+                $("#InStock").val("");
+                $.ajax({
+                    url: '@Url.Action("GetStockQty", "Product")',
+                    contentType: "application/json;charset=utf-8",
+                    data: { code: code },
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (datas) {
+                        if (datas == 2) {
+                            alert("Product Code not Valid.");
+                            $("#InStock").val("");
+                        }
+                        else if (datas == 0) {
+                            alert("Product Code not forund.");
+                            $("#InStock").val("");
+                        }
+                        else {
+                            $("#InStock").val(datas);
+                        }
+                    }
+                });
+            }
+            else {
+                alert("Product Code is Required for get Stock Quantity.");
+                $("#InStock").val("");
+            }
+        });
+    </script>
+} 
+

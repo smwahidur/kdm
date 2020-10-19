@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Report[@ViewBag.ReportName]</title>
+    
+    <style>
+        table {
+            border: 1px solid;
+            width: 100%;
+            outline: none;
+            /*border-collapse:collapse;*/
+            border-spacing: 0px;
+        }
+
+        td,th {
+            border: 1px solid;
+            outline: none;
+        }
+
+        
+
+        @@media print{
+
+            .report-header {
+                visibility: visible;
+                height: 100px;
+                background-color: yellow;
+                padding-bottom: 10px;
+            }
+
+            .report-footer {
+                visibility: visible;
+                height: 50px;
+                background-color: green;
+                padding-top: 10px;
+            }
+
+        }
+
+        @@media screen {
+            .report-header, .report-footer {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-header">
+        Employee Profile Details
+    </div>
+  @RenderBody()
+    <div class="report-footer">
+
+    </div>
+</body>
+</html>

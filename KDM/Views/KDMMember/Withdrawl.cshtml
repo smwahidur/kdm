@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Withdrawl";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row">
+
+        <div class="col col-sm-12">
+
+
+            @using (Html.BeginForm("WithdrawlAction", "KDMMember", FormMethod.Post, new { @name = "KDMMember-WithdrawlAction", @class = "", }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="main-card card border border-success rounded-0">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    You have Balance:
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Amount", "Request Amount", new { @class = "col" })
+                                    @Html.TextBox("Amount", null, new { @class = "form-control border border-success rounded-0 col-4" })
+                                    @Html.ValidationMessage("Amount", "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Purpose", "Purpose", new { @class = "col" })
+                                    @Html.TextBox("Purpose", null, new { @class = "form-control border border-success rounded-0 col-4" })
+                                    @Html.ValidationMessage("Purpose", "", new { @class = "text-danger" })
+                                </div>
+                                <input type="submit" id="btn-submit" value="Request Now" class="rounded-0 btn btn-success btn-lg" report-type="html" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+       
+

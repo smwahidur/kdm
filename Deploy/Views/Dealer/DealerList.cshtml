@@ -1,0 +1,52 @@
+﻿@using KDM.Models
+@model List<DealerVModel>
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@{ ViewBag.Title = "DealerList"; }
+
+<div class="col">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                LIST OF REGISTERED DEALERS
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:20%;text-align:center;">Name</th>
+                        <th style="width:20%;text-align:center;">Category</th>
+                        <th style="width:20%;text-align:center;">Phone Number</th>
+                        <th style="width:20%;text-align:center;">User Id</th>
+                        <th style="width:20%;text-align:center;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="width:20%;text-align:left;">@item.Name</td>
+                            <td style="width:20%;text-align:center;">@item.DealerType</td>
+                            <td style="width:20%;text-align:center;">@item.Phone1</td>
+                            <td style="width:20%;text-align:center;">@item.UserID</td>
+                            <td style="width:20%;text-align:center;">
+                                <div class="row" style="padding: 0%;">
+                                    <div class="form-group row justify-content-center col col-sm-12">
+                                        <a href='@Url.Action("DealerEdit","Dealer",new {DealerId=item.DealerID})' class="col-sm-3 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: limegreen;">Edit</a>
+                                        <a href='@Url.Action("DealerDelete","Dealer",new {DealerId=item.DealerID})' class="col-sm-3 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;background-color: indianred;" confirm="">Delete</a>
+                                        <a href='@Url.Action("DealerDetails","Dealer",new {DealerId=item.DealerID})' class="col-sm-6 btn btn-primary" style="text-align: center; height: 30px; font-size: 10px !important;">Show Details</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

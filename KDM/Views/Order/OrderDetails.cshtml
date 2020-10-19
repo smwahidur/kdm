@@ -1,0 +1,169 @@
+﻿@model KDM.Models.OrderViewModel
+@{
+    ViewBag.Title = "OrderDetails";
+}
+
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<body>
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger fade show" role="alert">
+            <strong>@ViewBag.ErrorMessage</strong>
+        </div>
+    }
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success fade show" role="alert">
+            <strong>@ViewBag.SuccessMessage</strong>
+        </div>
+    }
+    <p style="font-weight:bold;text-align:center;padding:0%;font-size:20px;">Order Details</p>
+    <hr />
+    <p style="font-weight:bold;text-align:center;padding:0%;"></p>
+    <p style="font-weight:bold;padding-left:2%;">Order Id&ensp;: &ensp;<span id="orderId"></span>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Date &ensp;:&ensp;@Model.OrderDateTime.ToString("dd-MM-yyyy")</p>
+    <p style="font-weight:bold;padding-left:2%;">Order By (User)&ensp;: &ensp; @Model.OrderBy</p>
+    <br />
+    <p style="font-weight:bold;text-align:center;padding:0%;font-size:20px;">Order Product</p>
+    <table style="width:100%;">
+        <thead>
+            <tr>
+                <th style="width:25%;text-align:left;">Product</th>
+                <th style="width:10%;text-align:center;">Quantity</th>
+                <th style="width:10%;text-align:center;">Price</th>
+                <th style="width:15%;text-align:center;">Product Type</th>
+                <th style="width:15%;text-align:center;">RB</th>
+                <th style="width:15%;text-align:center;">BP</th>
+                <th style="width:10%;text-align:center;">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width:25%;text-align:left;">@Model.ProductCode</td>
+                <td style="width:10%;text-align:center;">@Model.Quantity</td>
+                <td style="width:10%;text-align:center;">@Model.MRP</td>
+                <td style="width:15%;text-align:left;">@Model.ProductTypeID</td>
+                <td style="width:15%;text-align:center;">@Model.RB</td>
+                <td style="width:15%;text-align:center;">@Model.BP</td>
+                <td style="width:10%;text-align:center;">@Model.TotalAmount</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 8px; height: 8px;">
+                <td colspan="4" style="border:none;text-align:right;"></td>
+                <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Sub-Total :</td>
+                <td style="border:2px solid;text-align:right;">@Model.MRP</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 8px; height: 8px;">
+                <td colspan="4" style="border:none;text-align:right;"></td>
+                <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Flat Shipping Rate :</td>
+                <td style="border:2px solid;text-align:right;">@Model.MRP</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 8px; height: 8px;">
+                <td colspan="4" style="border:none;text-align:right;"></td>
+                <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Vat (15%) :</td>
+                <td style="border:2px solid;text-align:right;">@Model.MRP</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 8px; height: 8px;">
+                <td colspan="4" style="border:none;text-align:right;"></td>
+                <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Wallet Adjust :</td>
+                <td style="border:2px solid;text-align:right;">@Model.MRP</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr style="line-height: 8px; height: 8px;">
+                <td colspan="4" style="border:none;text-align:right;"></td>
+                <td colspan="2" style="border:2px solid;text-align:right;font-weight: bold;">Total :</td>
+                <td style="border:2px solid;text-align:right;">@Model.MRP</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="font-weight:bold;padding-left:2%;">Payment Address&ensp;: &ensp; @Model.PaymentAddress</p>
+    <p style="font-weight:bold;padding-left:2%;">Shipment Address&ensp;: &ensp; @Model.ShipmentAddress</p>
+    <div class="position-relative form-group">
+        <input type="button" value="Order Place" id="save" class="btn btn-success btn-lg btn-block" />
+    </div>
+</body>
+
+
+@section script
+{
+    <script>
+
+        $(document).ready(function () {
+            if (@ViewBag.OrderId != 0) {
+                $("#save").hide();
+                var div = document.getElementById('orderId');
+                div.innerHTML += @Model.OrderID;
+            }
+        });
+
+        var orderViewModel = {
+            ProductCode: @Html.Raw(Json.Encode(Model.ProductCode)),
+            ProductName: "",
+            ProductTypeID: @Html.Raw(Json.Encode(Model.ProductTypeID)),
+            ProductTypeName: "",
+            MRP: @Html.Raw(Json.Encode(Model.MRP)),
+            MemberID: @Html.Raw(Json.Encode(Model.MemberID)),
+            BP: @Html.Raw(Json.Encode(Model.BP)),
+            RB: @Html.Raw(Json.Encode(Model.RB)),
+            TotalAmount: @Html.Raw(Json.Encode(Model.TotalAmount)),
+            DealerID: @Html.Raw(Json.Encode(Model.DealerID)),
+            PaymentAddress: @Html.Raw(Json.Encode(Model.PaymentAddress)),
+            ShipmentAddress: @Html.Raw(Json.Encode(Model.ShipmentAddress)),
+            OrderStatus: "",
+            OrderDateTime: "",
+            OrderBy: @Html.Raw(Json.Encode(Model.OrderBy)),
+            OrderApprovedBy: "",
+            OrderCanceledBy: ""
+        };
+
+        $(document).on('click', '#save', function () {
+            $.ajax({
+                url: '@Url.Action("OrderSave", "Order")',
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify({ orderViewModel: orderViewModel }),
+                type: 'POST',
+                dataType: 'json',
+                success: function (datas) {
+                    if (datas == 0) {
+                        alert("Can't Placed the Order.");
+                    }
+                    else {
+                        var div = document.getElementById('orderId');
+                        div.innerHTML += datas.OrderID;
+                        alert("Order successfully Placed");
+                    }
+                },
+                error: function () {
+                    alert("Please check your internet connection first.")
+                }
+            });
+        });
+    </script>
+}
+

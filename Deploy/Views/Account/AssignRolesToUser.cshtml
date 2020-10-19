@@ -1,0 +1,105 @@
+﻿@model KDM.Models.AssignRolesToUserViewModel
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="row">
+
+        <div class="col-sm-4">
+            @using (Html.BeginForm("AssignRolesToUser", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="card mb-1">
+                <div class="card-header">
+                    @if (ViewBag.PanelTitles != null)
+                    {
+                        @ViewBag.PanelTitles["PanelTitle1"]
+                    }
+                    else
+                    {
+                        <span> START FROM HERE<b>&#11015;</b></span>
+                    }
+
+                   &nbsp; &nbsp;     <div class="float-sm-right">@Html.ActionLink("USERS LIST", "UsersList", "Account", null, new { @class = "link" })</div> 
+                </div>
+                <div class="card-body p-2">
+
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="alert alert-danger fade show" role="alert">
+                            <strong>@ViewBag.ErrorMessage</strong>
+                        </div>
+                    }
+                    @if (ViewBag.SuccessMessage != null)
+                    {
+                        <div class="alert alert-success fade show" role="alert">
+                            <strong>@ViewBag.SuccessMessage</strong>
+                        </div>
+                    }
+
+
+                    <div class="position-relative form-group">
+                        @*@Html.LabelFor(m => m.UserName, new { @class = "" })*@
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = Html.DisplayNameFor(d => d.UserName) })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+                <div class="card">
+                    
+                    <div class="card-body p-2">
+
+                        @if (Model.Roles != null & Model.Roles.Count() > 0)
+                        {
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Role Name</th>
+                                        <th>Enabled/Disabled</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for(int i=0;i<Model.Roles.Count();i++)
+                                    {
+                                    <tr>
+                                        <td>@Model.Roles[i].Text</td>
+                                        <td>
+                                            <div class="custom-control custom-switch pull-right">
+                                                @Html.CheckBoxFor(x => x.Roles[i].Selected, new { @class = "custom-control-input", @id = Model.Roles[i].Value })
+                                                @Html.HiddenFor(x => x.Roles[i].Value)
+                                                @Html.HiddenFor(x => x.Roles[i].Text)
+
+                                                <label class="custom-control-label" for=@Model.Roles[i].Value> </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    }
+
+                                </tbody>
+
+                                <tfoot>
+
+                                </tfoot>
+                            </table>
+                           
+                        }
+                    </div>
+
+                    <div class="card-footer">
+                        <input type="submit" value="Save" class="btn btn-block btn-success text-uppercase" />
+                    </div>
+                </div>
+            }
+        </div>
+
+</div>
+   
+
+
+
+

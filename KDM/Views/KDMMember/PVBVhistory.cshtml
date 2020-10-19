@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "Search For Account create ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+
+    <div class="col col-sm-12">
+
+
+        @using (Html.BeginForm("Formsearch", "Form", FormMethod.Get, new { @name = "Form-Formsearch", @class = "", }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="main-card card border border-success rounded-0">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                @Html.Label("FromDate", "From Date", new { @class = "col" })
+                                @Html.TextBox("FromDate", null, new { @class = "form-control border border-success rounded-0 col-3", @datepicker = "" })
+                                @Html.ValidationMessage("FromDate", "", new { @class = "text-danger" })
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.Label("ToDate", "To Date", new { @class = "col" })
+                                @Html.TextBox("ToDate", null, new { @class = "form-control border border-success rounded-0 col-3", @datepicker = "" })
+                                @Html.ValidationMessage("ToDate", "", new { @class = "text-danger" })
+                            </div>
+                            <input type="button" id="btn-submit" value="Search PV BV" class="rounded-0 btn btn-success btn-lg" report-type="html" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col col-sm-12">
+
+        <div class="main-card card border border-success rounded-0">
+            <div class="card-body">
+
+
+
+                @*<embed id="report-container" src="" type="application/pdf" width="100%" height="600px" />*@
+
+                @*<div id="page-container"></div>*@
+                <div class="report-container section-to-print">
+
+                </div>
+                <!--<input type="button" value="SAVE" id="btn-save" class="btn btn-lg btn-block btn-primary" /> -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section script{
+
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            $('#btn-save').click(function () {
+                $('.report-container form').submit();
+            });
+
+
+
+            $("#btn-submit").on("click", function (e) {
+
+                //$(".report-container").LoadingOverlay("show");
+
+                var reportType = $(this).attr('report-type');
+                if (reportType == 'pdf') {
+                    ShowPDF();
+                }
+                else if (reportType == 'html') {
+                    queryAction(e);
+                }
+                else if (reportType = 'excel') {
+                    ShowExcel();
+                }
+
+                //$(".report-container").LoadingOverlay("hide");
+
+            });
+
+
+        });
+
+        function queryAction(e) {
+            e.preventDefault();
+            showLoading("report-container");
+            LoadReport("Form-Formsearch");
+           hideLoading("report-container");
+        }
+
+        function LoadReport(formName) {
+
+            var url ="@Url.Action("ShowMyPvBvHistory", "KDMMember")";
+
+            var data = getWithQueryString(formName, url);
+
+            $(".report-container").html(data);
+            $(".rpt-header", ".report-container").hide();
+        }
+
+
+    </script>
+
+
+
+
+
+}
